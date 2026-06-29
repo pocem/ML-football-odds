@@ -256,56 +256,257 @@ def add_rolling_features(team_df):
                         .mean()
             )
         )
+    
+        # Result converted to points already exists
+    # Use Points
+
+    team_df['Win'] = team_df['Result'].map({
+        'W': 1,
+        'D': 0.5,
+        'L': 0
+    })
+
+
+    for col in ['Points', 'Win']:
+
+        team_df[f'{col}_Rolling5'] = (
+            team_df
+            .groupby(['Team','Venue'])[col]
+            .transform(
+                lambda x:
+                x.shift(1)
+                .rolling(5, min_periods=1)
+                .mean()
+            )
+        )
+
+        team_df[f'{col}_Rolling10'] = (
+            team_df
+            .groupby(['Team','Venue'])[col]
+            .transform(
+                lambda x:
+                x.shift(1)
+                .rolling(10, min_periods=1)
+                .mean()
+            )
+        )
+
+
+        team_df[f'{col}_Rolling5_all'] = (
+            team_df
+            .groupby('Team')[col]
+            .transform(
+                lambda x:
+                x.shift(1)
+                .rolling(5, min_periods=1)
+                .mean()
+            )
+        )
+
+
+        team_df[f'{col}_Rolling10_all'] = (
+            team_df
+            .groupby('Team')[col]
+            .transform(
+                lambda x:
+                x.shift(1)
+                .rolling(10, min_periods=1)
+                .mean()
+            )
+        )
     return team_df
 
 def build_match_dataset(team_df, df):
-    
+
     # -------------------------
     # HOME FEATURES
     # -------------------------
     home_features = team_df[team_df['Venue'] == 'H'].copy()
-    home_features = home_features.rename(columns={'Team': 'HomeTeam'})
-    cols_to_prefix = [c for c in home_features.columns if c not in ['Date', 'Time', 'HomeTeam']]
-    home_features = home_features.rename(columns={c: f'Home_{c}' for c in cols_to_prefix})
+
+    home_features = home_features.rename(
+        columns={'Team': 'HomeTeam'}
+    )
+
+    # Keep only pre-match rolling features + table position diff
+    home_keep = [
+        'Date',
+        'Time',
+        'HomeTeam',
+
+        'TablePosDiff',
+
+        'TablePosDiff_Rolling5',
+        'TablePosDiff_Rolling10',
+
+        'GoalsFor_Rolling5',
+        'GoalsFor_Rolling10',
+
+        'Shots_Rolling5',
+        'Shots_Rolling10',
+
+        'ShotsOnTarget_Rolling5',
+        'ShotsOnTarget_Rolling10',
+
+        'Corners_Rolling5',
+        'Corners_Rolling10',
+
+        'Fouls_Rolling5',
+        'Fouls_Rolling10',
+
+        'TablePosDiff_Rolling5_all',
+        'TablePosDiff_Rolling10_all',
+
+        'GoalsFor_Rolling5_all',
+        'GoalsFor_Rolling10_all',
+
+        'Shots_Rolling5_all',
+        'Shots_Rolling10_all',
+
+        'ShotsOnTarget_Rolling5_all',
+        'ShotsOnTarget_Rolling10_all',
+
+        'Corners_Rolling5_all',
+        'Corners_Rolling10_all',
+
+        'Fouls_Rolling5_all',
+        'Fouls_Rolling10_all',
+
+        'Points_Rolling5',
+        'Points_Rolling10',
+
+        'Points_Rolling5_all',
+        'Points_Rolling10_all',
+
+        'Win_Rolling5',
+        'Win_Rolling10',
+
+        'Win_Rolling5_all',
+        'Win_Rolling10_all'
+    ]
+
+
+    home_features = home_features[home_keep]
+
+
+    # Prefix
+    home_features = home_features.rename(
+        columns={
+            c: f"Home_{c}"
+            for c in home_features.columns
+            if c not in ['Date','Time','HomeTeam']
+        }
+    )
+
 
     # -------------------------
     # AWAY FEATURES
     # -------------------------
     away_features = team_df[team_df['Venue'] == 'A'].copy()
-    away_features = away_features.rename(columns={'Team': 'AwayTeam'})
-    cols_to_prefix = [c for c in away_features.columns if c not in ['Date', 'Time', 'AwayTeam']]
-    away_features = away_features.rename(columns={c: f'Away_{c}' for c in cols_to_prefix})
+
+    away_features = away_features.rename(
+        columns={'Team': 'AwayTeam'}
+    )
+
+    away_keep = [
+        'Date',
+        'Time',
+        'AwayTeam',
+
+        'TablePosDiff',
+
+        'TablePosDiff_Rolling5',
+        'TablePosDiff_Rolling10',
+
+        'GoalsFor_Rolling5',
+        'GoalsFor_Rolling10',
+
+        'Shots_Rolling5',
+        'Shots_Rolling10',
+
+        'ShotsOnTarget_Rolling5',
+        'ShotsOnTarget_Rolling10',
+
+        'Corners_Rolling5',
+        'Corners_Rolling10',
+
+        'Fouls_Rolling5',
+        'Fouls_Rolling10',
+
+        'TablePosDiff_Rolling5_all',
+        'TablePosDiff_Rolling10_all',
+
+        'GoalsFor_Rolling5_all',
+        'GoalsFor_Rolling10_all',
+
+        'Shots_Rolling5_all',
+        'Shots_Rolling10_all',
+
+        'ShotsOnTarget_Rolling5_all',
+        'ShotsOnTarget_Rolling10_all',
+
+        'Corners_Rolling5_all',
+        'Corners_Rolling10_all',
+
+        'Fouls_Rolling5_all',
+        'Fouls_Rolling10_all',
+
+        'Points_Rolling5',
+        'Points_Rolling10',
+
+        'Points_Rolling5_all',
+        'Points_Rolling10_all',
+
+        'Win_Rolling5',
+        'Win_Rolling10',
+
+        'Win_Rolling5_all',
+        'Win_Rolling10_all'
+    ]
+
+    away_features = away_features[away_keep]
+
 
     # -------------------------
-    # BASE MATCH DATA (Explicitly keep ONLY core identification columns)
+    # BASE MATCH DATA
     # -------------------------
-    core_cols = ['Date', 'Time', 'HomeTeam', 'AwayTeam', 'FTHG', 'FTAG', 'FTR', 'HomeTablePos', 'AwayTablePos', 'TablePosDiff']
-    matches = df[core_cols].copy()
+    matches = df[
+        [
+            'Date',
+            'Time',
+            'HomeTeam',
+            'AwayTeam',
+            'FTR',       # target
+            'FTHG',      # keep temporarily for evaluation
+            'FTAG'
+        ]
+    ].copy()
+
 
     # -------------------------
-    # MERGE HOME & AWAY (Include Time to prevent column duplication)
+    # MERGE FEATURES
     # -------------------------
     matches = matches.merge(
         home_features,
-        on=['Date', 'Time', 'HomeTeam'],
+        on=['Date','Time','HomeTeam'],
         how='left'
     )
+
 
     matches = matches.merge(
         away_features,
-        on=['Date', 'Time', 'AwayTeam'],
+        on=['Date','Time','AwayTeam'],
         how='left'
     )
 
-    # -------------------------
-    # CLEAN
-    # -------------------------
-    matches = matches.sort_values(['Date', 'Time']).reset_index(drop=True)
-    matches = matches.dropna(subset=['Home_GoalsFor', 'Away_GoalsFor'])
+
+    matches = matches.sort_values(
+        ['Date','Time']
+    ).reset_index(drop=True)
+
 
     return matches
 
-def export_dataset(matches, path="dataset/24-25.csv"):
+def export_dataset(matches, path="dataset/23-24.csv"):
     # optional safety cleanup
     df = matches.copy()
 
@@ -322,7 +523,7 @@ def export_dataset(matches, path="dataset/24-25.csv"):
     return df
 
 if __name__ == "__main__":
-    raw_df = load_data("pl24-25.csv")
+    raw_df = load_data("pl23-24.csv")
     df = add_table_positions(raw_df)   
     team_df = create_team_df(df)       
     team_df = add_rolling_features(team_df)
