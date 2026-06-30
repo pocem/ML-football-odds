@@ -1,5 +1,4 @@
 import pandas as pd
-import numpy as np
 
 from sklearn.preprocessing import (
     OneHotEncoder,
@@ -8,154 +7,119 @@ from sklearn.preprocessing import (
 )
 
 from sklearn.compose import ColumnTransformer
-from sklearn.pipeline import Pipeline
 
 
 class FootballPreprocessor:
 
-    def __init__(self, path):
+    def __init__(self, paths):
 
-        self.path = path
+        # Allow either a string or a list of paths
+        if isinstance(paths, str):
+            paths = [paths]
+
+        self.paths = paths
 
         self.encoder = LabelEncoder()
-        self.scaler = StandardScaler()
-
         self.preprocessor = None
 
+    # --------------------------------------------------
+    # LOAD ALL SEASONS
+    # --------------------------------------------------
 
     def load_data(self):
 
-        df = pd.read_csv(self.path)
+        dfs = []
 
-        df['Date'] = pd.to_datetime(df['Date'])
+        for path in self.paths:
 
-        # Ensure chronological order
+            season = path.split("/")[-1].replace(".csv", "")
+
+            df = pd.read_csv(path)
+
+            df["Date"] = pd.to_datetime(df["Date"])
+
+            # Remember which season every match belongs to
+            df["Season"] = season
+
+            dfs.append(df)
+
+        df = pd.concat(
+            dfs,
+            ignore_index=True
+        )
+
         df = (
             df
-            .sort_values(['Date', 'Time'])
+            .sort_values(["Date", "Time"])
             .reset_index(drop=True)
         )
 
         return df
 
+    # --------------------------------------------------
+    # CREATE X AND y
+    # --------------------------------------------------
 
     def prepare_features(self, df):
 
-        # -----------------------
-        # TARGET
-        # -----------------------
+        y = df["FTR"]
 
-        y = df['FTR']
-
-
-        # -----------------------
-        # REMOVE UNAVAILABLE DATA
-        # -----------------------
+        # Keep Season for walk-forward validation
+        meta = df[
+            [
+                "Date",
+                "Time",
+                "Season"
+            ]
+        ].copy()
 
         drop_cols = [
-            'Date',
-            'Time',
 
-            'FTR',
-            'FTHG',
-            'FTAG'
+            "Date",
+            "Time",
+            "Season",
+
+            "FTR",
+            "FTHG",
+            "FTAG"
+
         ]
 
+        X = df.drop(columns=drop_cols)
 
-        X = df.drop(
-            columns=drop_cols
-        )
+        return X, y, meta
 
+    # --------------------------------------------------
+    # FIT PREPROCESSOR
+    # --------------------------------------------------
 
-        return X, y
-
-
-
-    def split_data(
-        self,
-        X,
-        y,
-        train_ratio=0.8
-    ):
-
-        split = int(
-            len(X) * train_ratio
-        )
-
-
-        X_train = X.iloc[:split]
-        X_test = X.iloc[split:]
-
-
-        y_train = y.iloc[:split]
-        y_test = y.iloc[split:]
-
-
-        return (
-            X_train,
-            X_test,
-            y_train,
-            y_test
-        )
-
-
-
-    def preprocess(
-        self,
-        X_train,
-        X_test,
-        y_train,
-        y_test
-    ):
-
-
-        # -----------------------
-        # Encode target
-        # -----------------------
-
-        y_train = self.encoder.fit_transform(
-            y_train
-        )
-
-        y_test = self.encoder.transform(
-            y_test
-        )
-
-
-        # -----------------------
-        # Identify columns
-        # -----------------------
+    def fit(self, X):
 
         categorical = [
-            'HomeTeam',
-            'AwayTeam'
+            "HomeTeam",
+            "AwayTeam"
         ]
-
 
         numerical = [
-            c for c in X_train.columns
+            c
+            for c in X.columns
             if c not in categorical
         ]
-
-
-        # -----------------------
-        # Transform pipeline
-        # -----------------------
 
         self.preprocessor = ColumnTransformer(
 
             transformers=[
 
                 (
-                    'num',
+                    "num",
                     StandardScaler(),
                     numerical
                 ),
 
                 (
-                    'cat',
+                    "cat",
                     OneHotEncoder(
-                        handle_unknown='ignore'
+                        handle_unknown="ignore"
                     ),
                     categorical
                 )
@@ -164,45 +128,36 @@ class FootballPreprocessor:
 
         )
 
+        self.preprocessor.fit(X)
 
-        X_train = self.preprocessor.fit_transform(
-            X_train
-        )
+        return self
 
+    # --------------------------------------------------
+    # TRANSFORM FEATURES
+    # --------------------------------------------------
 
-        X_test = self.preprocessor.transform(
-            X_test
-        )
+    def transform(self, X):
 
+        return self.preprocessor.transform(X)
 
-        return (
-            X_train,
-            X_test,
-            y_train,
-            y_test
-        )
+    # --------------------------------------------------
+    # FIT + TRANSFORM
+    # --------------------------------------------------
 
+    def fit_transform(self, X):
 
+        self.fit(X)
 
-    def run(self):
+        return self.transform(X)
 
-        df = self.load_data()
+    # --------------------------------------------------
+    # TARGET ENCODING
+    # --------------------------------------------------
 
+    def encode_target(self, y):
 
-        X, y = self.prepare_features(
-            df
-        )
+        return self.encoder.fit_transform(y)
 
+    def transform_target(self, y):
 
-        X_train, X_test, y_train, y_test = self.split_data(
-            X,
-            y
-        )
-
-
-        return self.preprocess(
-            X_train,
-            X_test,
-            y_train,
-            y_test
-        )
+        return self.encoder.transform(y)

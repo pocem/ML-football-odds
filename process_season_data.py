@@ -506,7 +506,7 @@ def build_match_dataset(team_df, df):
 
     return matches
 
-def export_dataset(matches, path="dataset/23-24.csv"):
+def export_dataset(matches, path="dataset/21-22.csv"):
     # optional safety cleanup
     df = matches.copy()
 
@@ -523,7 +523,7 @@ def export_dataset(matches, path="dataset/23-24.csv"):
     return df
 
 if __name__ == "__main__":
-    raw_df = load_data("pl23-24.csv")
+    raw_df = load_data("pl21-22.csv")
     df = add_table_positions(raw_df)   
     team_df = create_team_df(df)       
     team_df = add_rolling_features(team_df)
