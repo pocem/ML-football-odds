@@ -134,6 +134,31 @@ def create_team_df(df):
         ['Team', 'Date', 'Time']
     ).reset_index(drop=True)
 
+    team_df["GoalDifference"] = (
+    team_df["GoalsFor"] -
+    team_df["GoalsAgainst"]
+)
+
+    team_df["ShotDifference"] = (
+        team_df["Shots"] -
+        team_df["ShotsAgainst"]
+    )
+
+    team_df["ShotOnTargetDifference"] = (
+        team_df["ShotsOnTarget"] -
+        team_df["ShotsOnTargetAgainst"]
+    )
+
+    team_df["CornerDifference"] = (
+        team_df["Corners"] -
+        team_df["CornersAgainst"]
+    )
+
+    team_df["FoulDifference"] = (
+        team_df["FoulsAgainst"] -
+        team_df["Fouls"]
+    )
+
     return team_df
 
 def add_table_positions(df):
@@ -199,314 +224,314 @@ def add_table_positions(df):
     return df
 
 def add_rolling_features(team_df):
-    ### Compute rolling averages ###
+    """Compute all rolling features"""
+
+    # -------------------------------------------------
+    # Create additional features FIRST
+    # -------------------------------------------------
+
+    # Offensive efficiency
+    team_df["ShotAccuracy"] = (
+        team_df["ShotsOnTarget"] /
+        team_df["Shots"].replace(0, 1)
+    )
+
+    # Defensive statistics
+    team_df["GoalsAgainst"] = team_df["GoalsAgainst"]
+    team_df["ShotsAgainst"] = team_df["ShotsAgainst"]
+    team_df["ShotsOnTargetAgainst"] = team_df["ShotsOnTargetAgainst"]
+
+    # Net performance
+    team_df["GoalDifference"] = (
+        team_df["GoalsFor"] -
+        team_df["GoalsAgainst"]
+    )
+
+    team_df["ShotDifference"] = (
+        team_df["Shots"] -
+        team_df["ShotsAgainst"]
+    )
+
+    team_df["ShotOnTargetDifference"] = (
+        team_df["ShotsOnTarget"] -
+        team_df["ShotsOnTargetAgainst"]
+    )
+
+    team_df["CornerDifference"] = (
+        team_df["Corners"] -
+        team_df["CornersAgainst"]
+    )
+
+    team_df["FoulDifference"] = (
+        team_df["FoulsAgainst"] -
+        team_df["Fouls"]
+    )
+
+    # -------------------------------------------------
+    # Columns to compute rolling averages for
+    # -------------------------------------------------
+
     rolling_cols = [
-        'TablePosDiff',
-        'GoalsFor',
-        'Shots',
-        'ShotsOnTarget',
-        'Corners',
-        'Fouls'
+
+        "TablePosDiff",
+
+        "GoalsFor",
+        "GoalsAgainst",
+        "GoalDifference",
+
+        "Shots",
+        "ShotsAgainst",
+        "ShotDifference",
+
+        "ShotsOnTarget",
+        "ShotsOnTargetAgainst",
+        "ShotOnTargetDifference",
+
+        "ShotAccuracy",
+
+        "Corners",
+        "CornerDifference",
+
+        "Fouls",
+        "FoulDifference"
     ]
 
-    for col in rolling_cols:
-
-        team_df[f'{col}_Rolling5'] = (
-            team_df
-            .groupby(['Team', 'Venue'])[col]
-            .transform(
-                lambda x: x.shift(1)
-                        .rolling(window=5, min_periods=1)
-                        .mean()
-            )
-        )
+    # -------------------------------------------------
+    # Rolling 5 (home/away)
+    # -------------------------------------------------
 
     for col in rolling_cols:
 
-        team_df[f'{col}_Rolling10'] = (
+        team_df[f"{col}_Rolling5"] = (
             team_df
-            .groupby(['Team', 'Venue'])[col]
+            .groupby(["Team", "Venue"])[col]
             .transform(
-                lambda x: x.shift(1)
-                        .rolling(window=10, min_periods=1)
-                        .mean()
+                lambda x:
+                    x.shift(1)
+                     .rolling(5, min_periods=1)
+                     .mean()
             )
         )
+
+    # -------------------------------------------------
+    # Rolling 10 (home/away)
+    # -------------------------------------------------
 
     for col in rolling_cols:
 
-        team_df[f'{col}_Rolling5_all'] = (
+        team_df[f"{col}_Rolling10"] = (
             team_df
-            .groupby(['Team'])[col]
+            .groupby(["Team", "Venue"])[col]
             .transform(
-                lambda x: x.shift(1)
-                        .rolling(window=5, min_periods=1)
-                        .mean()
+                lambda x:
+                    x.shift(1)
+                     .rolling(10, min_periods=1)
+                     .mean()
             )
         )
+
+    # -------------------------------------------------
+    # Rolling 5 overall
+    # -------------------------------------------------
 
     for col in rolling_cols:
 
-        team_df[f'{col}_Rolling10_all'] = (
+        team_df[f"{col}_Rolling5_all"] = (
             team_df
-            .groupby(['Team'])[col]
+            .groupby("Team")[col]
             .transform(
-                lambda x: x.shift(1)
-                        .rolling(window=10, min_periods=1)
-                        .mean()
+                lambda x:
+                    x.shift(1)
+                     .rolling(5, min_periods=1)
+                     .mean()
             )
         )
-    
-        # Result converted to points already exists
-    # Use Points
 
-    team_df['Win'] = team_df['Result'].map({
-        'W': 1,
-        'D': 0.5,
-        'L': 0
+    # -------------------------------------------------
+    # Rolling 10 overall
+    # -------------------------------------------------
+
+    for col in rolling_cols:
+
+        team_df[f"{col}_Rolling10_all"] = (
+            team_df
+            .groupby("Team")[col]
+            .transform(
+                lambda x:
+                    x.shift(1)
+                     .rolling(10, min_periods=1)
+                     .mean()
+            )
+        )
+
+    # -------------------------------------------------
+    # Win indicator
+    # -------------------------------------------------
+
+    team_df["Win"] = team_df["Result"].map({
+        "W": 1,
+        "D": 0.5,
+        "L": 0
     })
 
+    # -------------------------------------------------
+    # Rolling Points + Win
+    # -------------------------------------------------
 
-    for col in ['Points', 'Win']:
+    for col in ["Points", "Win"]:
 
-        team_df[f'{col}_Rolling5'] = (
+        team_df[f"{col}_Rolling5"] = (
             team_df
-            .groupby(['Team','Venue'])[col]
+            .groupby(["Team", "Venue"])[col]
             .transform(
                 lambda x:
-                x.shift(1)
-                .rolling(5, min_periods=1)
-                .mean()
+                    x.shift(1)
+                     .rolling(5, min_periods=1)
+                     .mean()
             )
         )
 
-        team_df[f'{col}_Rolling10'] = (
+        team_df[f"{col}_Rolling10"] = (
             team_df
-            .groupby(['Team','Venue'])[col]
+            .groupby(["Team", "Venue"])[col]
             .transform(
                 lambda x:
-                x.shift(1)
-                .rolling(10, min_periods=1)
-                .mean()
+                    x.shift(1)
+                     .rolling(10, min_periods=1)
+                     .mean()
             )
         )
 
-
-        team_df[f'{col}_Rolling5_all'] = (
+        team_df[f"{col}_Rolling5_all"] = (
             team_df
-            .groupby('Team')[col]
+            .groupby("Team")[col]
             .transform(
                 lambda x:
-                x.shift(1)
-                .rolling(5, min_periods=1)
-                .mean()
+                    x.shift(1)
+                     .rolling(5, min_periods=1)
+                     .mean()
             )
         )
 
-
-        team_df[f'{col}_Rolling10_all'] = (
+        team_df[f"{col}_Rolling10_all"] = (
             team_df
-            .groupby('Team')[col]
+            .groupby("Team")[col]
             .transform(
                 lambda x:
-                x.shift(1)
-                .rolling(10, min_periods=1)
-                .mean()
+                    x.shift(1)
+                     .rolling(10, min_periods=1)
+                     .mean()
             )
         )
+
     return team_df
 
 def build_match_dataset(team_df, df):
 
-    # -------------------------
-    # HOME FEATURES
-    # -------------------------
-    home_features = team_df[team_df['Venue'] == 'H'].copy()
+    # -------------------------------------------------
+    # Automatically keep all usable pre-match features
+    # -------------------------------------------------
 
-    home_features = home_features.rename(
-        columns={'Team': 'HomeTeam'}
-    )
-
-    # Keep only pre-match rolling features + table position diff
-    home_keep = [
-        'Date',
-        'Time',
-        'HomeTeam',
-
-        'TablePosDiff',
-
-        'TablePosDiff_Rolling5',
-        'TablePosDiff_Rolling10',
-
-        'GoalsFor_Rolling5',
-        'GoalsFor_Rolling10',
-
-        'Shots_Rolling5',
-        'Shots_Rolling10',
-
-        'ShotsOnTarget_Rolling5',
-        'ShotsOnTarget_Rolling10',
-
-        'Corners_Rolling5',
-        'Corners_Rolling10',
-
-        'Fouls_Rolling5',
-        'Fouls_Rolling10',
-
-        'TablePosDiff_Rolling5_all',
-        'TablePosDiff_Rolling10_all',
-
-        'GoalsFor_Rolling5_all',
-        'GoalsFor_Rolling10_all',
-
-        'Shots_Rolling5_all',
-        'Shots_Rolling10_all',
-
-        'ShotsOnTarget_Rolling5_all',
-        'ShotsOnTarget_Rolling10_all',
-
-        'Corners_Rolling5_all',
-        'Corners_Rolling10_all',
-
-        'Fouls_Rolling5_all',
-        'Fouls_Rolling10_all',
-
-        'Points_Rolling5',
-        'Points_Rolling10',
-
-        'Points_Rolling5_all',
-        'Points_Rolling10_all',
-
-        'Win_Rolling5',
-        'Win_Rolling10',
-
-        'Win_Rolling5_all',
-        'Win_Rolling10_all'
+    keep_cols = [
+        "Date",
+        "Time",
+        "Team",
+        "TablePosDiff"
     ]
 
+    # Automatically include every rolling feature
+    keep_cols += [
+        c for c in team_df.columns
+        if "Rolling" in c
+    ]
 
-    home_features = home_features[home_keep]
+    # Remove duplicates while preserving order
+    keep_cols = list(dict.fromkeys(keep_cols))
 
+    # -------------------------------------------------
+    # HOME FEATURES
+    # -------------------------------------------------
 
-    # Prefix
+    home_features = (
+        team_df[team_df["Venue"] == "H"][keep_cols]
+        .rename(columns={"Team": "HomeTeam"})
+    )
+
     home_features = home_features.rename(
         columns={
             c: f"Home_{c}"
             for c in home_features.columns
-            if c not in ['Date','Time','HomeTeam']
+            if c not in ["Date", "Time", "HomeTeam"]
         }
     )
 
-
-    # -------------------------
+    # -------------------------------------------------
     # AWAY FEATURES
-    # -------------------------
-    away_features = team_df[team_df['Venue'] == 'A'].copy()
+    # -------------------------------------------------
 
-    away_features = away_features.rename(
-        columns={'Team': 'AwayTeam'}
+    away_features = (
+        team_df[team_df["Venue"] == "A"][keep_cols]
+        .rename(columns={"Team": "AwayTeam"})
     )
 
-    away_keep = [
-        'Date',
-        'Time',
-        'AwayTeam',
+    away_features = away_features.rename(
+        columns={
+            c: f"Away_{c}"
+            for c in away_features.columns
+            if c not in ["Date", "Time", "AwayTeam"]
+        }
+    )
 
-        'TablePosDiff',
+    # -------------------------------------------------
+    # Base match data
+    # -------------------------------------------------
 
-        'TablePosDiff_Rolling5',
-        'TablePosDiff_Rolling10',
-
-        'GoalsFor_Rolling5',
-        'GoalsFor_Rolling10',
-
-        'Shots_Rolling5',
-        'Shots_Rolling10',
-
-        'ShotsOnTarget_Rolling5',
-        'ShotsOnTarget_Rolling10',
-
-        'Corners_Rolling5',
-        'Corners_Rolling10',
-
-        'Fouls_Rolling5',
-        'Fouls_Rolling10',
-
-        'TablePosDiff_Rolling5_all',
-        'TablePosDiff_Rolling10_all',
-
-        'GoalsFor_Rolling5_all',
-        'GoalsFor_Rolling10_all',
-
-        'Shots_Rolling5_all',
-        'Shots_Rolling10_all',
-
-        'ShotsOnTarget_Rolling5_all',
-        'ShotsOnTarget_Rolling10_all',
-
-        'Corners_Rolling5_all',
-        'Corners_Rolling10_all',
-
-        'Fouls_Rolling5_all',
-        'Fouls_Rolling10_all',
-
-        'Points_Rolling5',
-        'Points_Rolling10',
-
-        'Points_Rolling5_all',
-        'Points_Rolling10_all',
-
-        'Win_Rolling5',
-        'Win_Rolling10',
-
-        'Win_Rolling5_all',
-        'Win_Rolling10_all'
-    ]
-
-    away_features = away_features[away_keep]
-
-
-    # -------------------------
-    # BASE MATCH DATA
-    # -------------------------
     matches = df[
         [
-            'Date',
-            'Time',
-            'HomeTeam',
-            'AwayTeam',
-            'FTR',       # target
-            'FTHG',      # keep temporarily for evaluation
-            'FTAG'
+            "Date",
+            "Time",
+            "HomeTeam",
+            "AwayTeam",
+            "FTR",
+            "FTHG",
+            "FTAG",
         ]
     ].copy()
 
+    # -------------------------------------------------
+    # Merge home features
+    # -------------------------------------------------
 
-    # -------------------------
-    # MERGE FEATURES
-    # -------------------------
     matches = matches.merge(
         home_features,
-        on=['Date','Time','HomeTeam'],
-        how='left'
+        on=["Date", "Time", "HomeTeam"],
+        how="left"
     )
 
+    # -------------------------------------------------
+    # Merge away features
+    # -------------------------------------------------
 
     matches = matches.merge(
         away_features,
-        on=['Date','Time','AwayTeam'],
-        how='left'
+        on=["Date", "Time", "AwayTeam"],
+        how="left"
     )
 
+    # -------------------------------------------------
+    # Final cleanup
+    # -------------------------------------------------
 
-    matches = matches.sort_values(
-        ['Date','Time']
-    ).reset_index(drop=True)
-
+    matches = (
+        matches
+        .sort_values(["Date", "Time"])
+        .reset_index(drop=True)
+    )
 
     return matches
 
-def export_dataset(matches, path="dataset/21-22.csv"):
+
+def export_dataset(matches, path="dataset/25-26.csv"):
     # optional safety cleanup
     df = matches.copy()
 
@@ -523,7 +548,7 @@ def export_dataset(matches, path="dataset/21-22.csv"):
     return df
 
 if __name__ == "__main__":
-    raw_df = load_data("pl21-22.csv")
+    raw_df = load_data("pl25-26.csv")
     df = add_table_positions(raw_df)   
     team_df = create_team_df(df)       
     team_df = add_rolling_features(team_df)
