@@ -1,21 +1,31 @@
 import pandas as pd
 
 def load_data(path):
-    # Explicitly define the exact columns you want to keep
     keep_columns = [
         'Date', 'Time', 'HomeTeam', 'AwayTeam', 
         'FTHG', 'FTAG', 'FTR', 'HTHG', 'HTAG', 'HTR', 
         'HS', 'AS', 'HST', 'AST', 'HF', 'AF', 
         'HC', 'AC', 'HY', 'AY', 'HR', 'AR'
     ]
-    
-    # Read ONLY these columns from the CSV file
-    df = pd.read_csv(path, usecols=keep_columns)
-    
-    # Standard formatting
+
+    available_cols = pd.read_csv(path, nrows=0).columns.tolist()
+    cols_to_use = [c for c in keep_columns if c in available_cols]
+    df = pd.read_csv(path, usecols=cols_to_use)
+
+    # Some season files have a trailing blank row (all commas, no data)
+    # which read_csv parses as a row of NaNs instead of skipping it.
+    df = df.dropna(subset=['HomeTeam', 'AwayTeam']).reset_index(drop=True)
+
     df['Date'] = pd.to_datetime(df['Date'], dayfirst=True)
+
+    # If Time is missing (older seasons), fill with a constant placeholder
+    # so downstream sort/merge logic doesn't need special-casing everywhere.
+    if 'Time' not in df.columns:
+        df['Time'] = '00:00'
+        print(f"Note: {path} has no Time column — filled with placeholder '00:00'")
+
     df = df.sort_values(['Date', 'Time']).reset_index(drop=True)
-    
+
     return df
 
 def create_team_df(df):
@@ -236,11 +246,6 @@ def add_rolling_features(team_df):
         team_df["Shots"].replace(0, 1)
     )
 
-    # Defensive statistics
-    team_df["GoalsAgainst"] = team_df["GoalsAgainst"]
-    team_df["ShotsAgainst"] = team_df["ShotsAgainst"]
-    team_df["ShotsOnTargetAgainst"] = team_df["ShotsOnTargetAgainst"]
-
     # Net performance
     team_df["GoalDifference"] = (
         team_df["GoalsFor"] -
@@ -297,7 +302,7 @@ def add_rolling_features(team_df):
     ]
 
     # -------------------------------------------------
-    # Rolling 5 (home/away)
+    # Rolling 5 (home/away grouped only)
     # -------------------------------------------------
 
     for col in rolling_cols:
@@ -309,57 +314,6 @@ def add_rolling_features(team_df):
                 lambda x:
                     x.shift(1)
                      .rolling(5, min_periods=1)
-                     .mean()
-            )
-        )
-
-    # -------------------------------------------------
-    # Rolling 10 (home/away)
-    # -------------------------------------------------
-
-    for col in rolling_cols:
-
-        team_df[f"{col}_Rolling10"] = (
-            team_df
-            .groupby(["Team", "Venue"])[col]
-            .transform(
-                lambda x:
-                    x.shift(1)
-                     .rolling(10, min_periods=1)
-                     .mean()
-            )
-        )
-
-    # -------------------------------------------------
-    # Rolling 5 overall
-    # -------------------------------------------------
-
-    for col in rolling_cols:
-
-        team_df[f"{col}_Rolling5_all"] = (
-            team_df
-            .groupby("Team")[col]
-            .transform(
-                lambda x:
-                    x.shift(1)
-                     .rolling(5, min_periods=1)
-                     .mean()
-            )
-        )
-
-    # -------------------------------------------------
-    # Rolling 10 overall
-    # -------------------------------------------------
-
-    for col in rolling_cols:
-
-        team_df[f"{col}_Rolling10_all"] = (
-            team_df
-            .groupby("Team")[col]
-            .transform(
-                lambda x:
-                    x.shift(1)
-                     .rolling(10, min_periods=1)
                      .mean()
             )
         )
@@ -375,7 +329,7 @@ def add_rolling_features(team_df):
     })
 
     # -------------------------------------------------
-    # Rolling Points + Win
+    # Rolling 5 Points + Win (home/away grouped only)
     # -------------------------------------------------
 
     for col in ["Points", "Win"]:
@@ -390,39 +344,7 @@ def add_rolling_features(team_df):
                      .mean()
             )
         )
-
-        team_df[f"{col}_Rolling10"] = (
-            team_df
-            .groupby(["Team", "Venue"])[col]
-            .transform(
-                lambda x:
-                    x.shift(1)
-                     .rolling(10, min_periods=1)
-                     .mean()
-            )
-        )
-
-        team_df[f"{col}_Rolling5_all"] = (
-            team_df
-            .groupby("Team")[col]
-            .transform(
-                lambda x:
-                    x.shift(1)
-                     .rolling(5, min_periods=1)
-                     .mean()
-            )
-        )
-
-        team_df[f"{col}_Rolling10_all"] = (
-            team_df
-            .groupby("Team")[col]
-            .transform(
-                lambda x:
-                    x.shift(1)
-                     .rolling(10, min_periods=1)
-                     .mean()
-            )
-        )
+    # matches["Elo_Diff"] = matches["Home_Elo"] - matches["Away_Elo"]
 
     return team_df
 
@@ -531,7 +453,7 @@ def build_match_dataset(team_df, df):
     return matches
 
 
-def export_dataset(matches, path="dataset/25-26.csv"):
+def export_dataset(matches, path="dataset/13-14.csv"):
     # optional safety cleanup
     df = matches.copy()
 
@@ -548,7 +470,7 @@ def export_dataset(matches, path="dataset/25-26.csv"):
     return df
 
 if __name__ == "__main__":
-    raw_df = load_data("pl25-26.csv")
+    raw_df = load_data("pl13-14.csv")
     df = add_table_positions(raw_df)   
     team_df = create_team_df(df)       
     team_df = add_rolling_features(team_df)

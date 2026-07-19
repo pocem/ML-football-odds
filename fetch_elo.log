@@ -1,0 +1,64 @@
+[07/18/26 09:14:44] INFO     No custom team name replacements     _config.py:92
+                             found. You can configure these in                 
+                             C:\Users\misog\soccerdata\config\tea              
+                             mname_replacements.json.                          
+                    INFO     No custom league dict found. You    _config.py:190
+                             can configure additional leagues in               
+                             C:\Users\misog\soccerdata\config\le               
+                             ague_dict.json.                                   
+Fetching Elo for 1552 unique dates...
+                    INFO     Saving cached data to               _common.py:250
+                             C:\Users\misog\soccerdata\data\Club               
+                             Elo                                               
+[2026-07-18 09:14:44] INFO     TLSLibrary:_load_library:397 - Successfully loaded TLS library: C:\Users\misog\anaconda3\Lib\site-packages\tls_requests\bin\tls-client-xgo-1.13.1-windows-amd64.dll
+                    INFO     Successfully loaded TLS library:  libraries.py:397
+                             C:\Users\misog\anaconda3\Lib\site                 
+                             -packages\tls_requests\bin\tls-cl                 
+                             ient-xgo-1.13.1-windows-amd64.dll                 
+  100/1552 dates done
+  200/1552 dates done
+  300/1552 dates done
+  400/1552 dates done
+  500/1552 dates done
+  600/1552 dates done
+[07/18/26 09:27:46] ERROR    Error while scraping                _common.py:527
+                             http://api.clubelo.com/2018-11-23.                
+                             Retrying... (attempt 1 of 5).                     
+                             Traceback (most recent call last):                
+                               File                                            
+                             "C:\Users\misog\anaconda3\Lib\site-               
+                             packages\soccerdata\_common.py",                  
+                             line 507, in _download_and_save                   
+                                 response.raise_for_status()                   
+                                 ~~~~~~~~~~~~~~~~~~~~~~~~~^^                   
+                               File                                            
+                             "C:\Users\misog\anaconda3\Lib\site-               
+                             packages\tls_requests\models\respon               
+                             se.py", line 207, in                              
+                             raise_for_status                                  
+                                 raise HTTPError(                              
+                                 ...<6 lines>...                               
+                                 )                                             
+                             tls_requests.exceptions.HTTPError:                
+                             0 TLS Client Error: failed to do                  
+                             request: Get                                      
+                             "http://api.clubelo.com/2018-11-23"               
+                             : dial tcp 37.128.134.74:80:                      
+                             connectex: A connection attempt                   
+                             failed because the connected party                
+                             did not properly respond after a                  
+                             period of time, or established                    
+                             connection failed because connected               
+                             host has failed to respond. for                   
+                             url:                                              
+                             http://api.clubelo.com/2018-11-23                 
+  700/1552 dates done
+  800/1552 dates done
+  900/1552 dates done
+  1000/1552 dates done
+  1100/1552 dates done
+  1200/1552 dates done
+  1300/1552 dates done
+  1400/1552 dates done
+  1500/1552 dates done
+Saved (54999, 9) to elo_df.csv
