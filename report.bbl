@@ -1,0 +1,548 @@
+% $ biblatex auxiliary file $
+% $ biblatex bbl format version 3.3 $
+% Do not modify the above lines!
+%
+% This is an auxiliary file used by the 'biblatex' package.
+% This file may safely be deleted. It will be recreated by
+% biber as required.
+%
+\begingroup
+\makeatletter
+\@ifundefined{ver@biblatex.sty}
+  {\@latex@error
+     {Missing 'biblatex' package}
+     {The bibliography requires the 'biblatex' package.}
+      \aftergroup\endinput}
+  {}
+\endgroup
+
+
+\refsection{0}
+  \datalist[entry]{nty/global//global/global/global}
+    \entry{xG}{article}{}{}
+      \name{author}{2}{}{%
+        {{hash=4864ef75e5ebf8c0c9b2bb7556dcc51e}{%
+           family={Anzer},
+           familyi={A\bibinitperiod},
+           given={Gabriel},
+           giveni={G\bibinitperiod}}}%
+        {{hash=a6c7bc0656ab029d05b8735ce00a5f47}{%
+           family={Bauer},
+           familyi={B\bibinitperiod},
+           given={Pascal},
+           giveni={P\bibinitperiod}}}%
+      }
+      \strng{namehash}{35a5afdeaa3dbbbf77fe3742c765c6ce}
+      \strng{fullhash}{35a5afdeaa3dbbbf77fe3742c765c6ce}
+      \strng{fullhashraw}{35a5afdeaa3dbbbf77fe3742c765c6ce}
+      \strng{bibnamehash}{35a5afdeaa3dbbbf77fe3742c765c6ce}
+      \strng{authorbibnamehash}{35a5afdeaa3dbbbf77fe3742c765c6ce}
+      \strng{authornamehash}{35a5afdeaa3dbbbf77fe3742c765c6ce}
+      \strng{authorfullhash}{35a5afdeaa3dbbbf77fe3742c765c6ce}
+      \strng{authorfullhashraw}{35a5afdeaa3dbbbf77fe3742c765c6ce}
+      \field{sortinit}{A}
+      \field{sortinithash}{2f401846e2029bad6b3ecc16d50031e2}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{A Goal Scoring Probability Model for Shots Based on Synchronized Positional and Event Data in Football (Soccer)}
+      \field{year}{2021}
+      \verb{urlraw}
+      \verb https://pmc.ncbi.nlm.nih.gov/articles/PMC8056301/
+      \endverb
+      \verb{url}
+      \verb https://pmc.ncbi.nlm.nih.gov/articles/PMC8056301/
+      \endverb
+    \endentry
+    \entry{Breiman2001RandomForests}{article}{}{}
+      \name{author}{1}{}{%
+        {{hash=132b7100417675d55d5d4d8b244f7a34}{%
+           family={Breiman},
+           familyi={B\bibinitperiod},
+           given={Leo},
+           giveni={L\bibinitperiod}}}%
+      }
+      \strng{namehash}{132b7100417675d55d5d4d8b244f7a34}
+      \strng{fullhash}{132b7100417675d55d5d4d8b244f7a34}
+      \strng{fullhashraw}{132b7100417675d55d5d4d8b244f7a34}
+      \strng{bibnamehash}{132b7100417675d55d5d4d8b244f7a34}
+      \strng{authorbibnamehash}{132b7100417675d55d5d4d8b244f7a34}
+      \strng{authornamehash}{132b7100417675d55d5d4d8b244f7a34}
+      \strng{authorfullhash}{132b7100417675d55d5d4d8b244f7a34}
+      \strng{authorfullhashraw}{132b7100417675d55d5d4d8b244f7a34}
+      \field{sortinit}{B}
+      \field{sortinithash}{d7095fff47cda75ca2589920aae98399}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Machine Learning}
+      \field{number}{1}
+      \field{title}{Random Forests}
+      \field{volume}{45}
+      \field{year}{2001}
+      \field{pages}{5\bibrangedash 32}
+      \range{pages}{28}
+    \endentry
+    \entry{Climatology}{article}{}{}
+      \name{author}{1}{}{%
+        {{hash=677d442ab23f30d2cbb1ce88ad375222}{%
+           family={Brier},
+           familyi={B\bibinitperiod},
+           given={Glenn\bibnamedelima W.},
+           giveni={G\bibinitperiod\bibinitdelim W\bibinitperiod}}}%
+      }
+      \strng{namehash}{677d442ab23f30d2cbb1ce88ad375222}
+      \strng{fullhash}{677d442ab23f30d2cbb1ce88ad375222}
+      \strng{fullhashraw}{677d442ab23f30d2cbb1ce88ad375222}
+      \strng{bibnamehash}{677d442ab23f30d2cbb1ce88ad375222}
+      \strng{authorbibnamehash}{677d442ab23f30d2cbb1ce88ad375222}
+      \strng{authornamehash}{677d442ab23f30d2cbb1ce88ad375222}
+      \strng{authorfullhash}{677d442ab23f30d2cbb1ce88ad375222}
+      \strng{authorfullhashraw}{677d442ab23f30d2cbb1ce88ad375222}
+      \field{sortinit}{B}
+      \field{sortinithash}{d7095fff47cda75ca2589920aae98399}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Monthly Weather Review}
+      \field{number}{1}
+      \field{title}{Verification of Forecasts Expressed in Terms of Probability}
+      \field{volume}{78}
+      \field{year}{1950}
+      \verb{urlraw}
+      \verb https://journals.ametsoc.org/view/journals/mwre/78/1/1520-0493_1950_078_0001_vofeit_2_0_co_2.xml
+      \endverb
+      \verb{url}
+      \verb https://journals.ametsoc.org/view/journals/mwre/78/1/1520-0493_1950_078_0001_vofeit_2_0_co_2.xml
+      \endverb
+    \endentry
+    \entry{MLeval}{misc}{}{}
+      \name{author}{3}{}{%
+        {{hash=14a5f676fbcf21d9d3dbf0d45f630b06}{%
+           family={Bunker},
+           familyi={B\bibinitperiod},
+           given={Rory},
+           giveni={R\bibinitperiod}}}%
+        {{hash=f801e7241e6d51c4f17a717283c81150}{%
+           family={Yeung},
+           familyi={Y\bibinitperiod},
+           given={Calvin},
+           giveni={C\bibinitperiod}}}%
+        {{hash=569711c363027fed98622c62cda54209}{%
+           family={Fujii},
+           familyi={F\bibinitperiod},
+           given={Keisuke},
+           giveni={K\bibinitperiod}}}%
+      }
+      \strng{namehash}{cc9a7f379db4d980f3762fcc212337c1}
+      \strng{fullhash}{cc9a7f379db4d980f3762fcc212337c1}
+      \strng{fullhashraw}{cc9a7f379db4d980f3762fcc212337c1}
+      \strng{bibnamehash}{cc9a7f379db4d980f3762fcc212337c1}
+      \strng{authorbibnamehash}{cc9a7f379db4d980f3762fcc212337c1}
+      \strng{authornamehash}{cc9a7f379db4d980f3762fcc212337c1}
+      \strng{authorfullhash}{cc9a7f379db4d980f3762fcc212337c1}
+      \strng{authorfullhashraw}{cc9a7f379db4d980f3762fcc212337c1}
+      \field{sortinit}{B}
+      \field{sortinithash}{d7095fff47cda75ca2589920aae98399}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{eprinttype}{arXiv}
+      \field{title}{Machine Learning for Soccer Match Result Prediction}
+      \field{year}{2024}
+      \verb{eprint}
+      \verb 2403.07669
+      \endverb
+      \verb{urlraw}
+      \verb https://arxiv.org/abs/2403.07669
+      \endverb
+      \verb{url}
+      \verb https://arxiv.org/abs/2403.07669
+      \endverb
+    \endentry
+    \entry{ChenGuestrin2016XGBoost}{inproceedings}{}{}
+      \name{author}{2}{}{%
+        {{hash=48461ccdf50ba5a54e29a354aa734c0b}{%
+           family={Chen},
+           familyi={C\bibinitperiod},
+           given={Tianqi},
+           giveni={T\bibinitperiod}}}%
+        {{hash=c9ab8ac486d7f85ac914b1a8e51e512b}{%
+           family={Guestrin},
+           familyi={G\bibinitperiod},
+           given={Carlos},
+           giveni={C\bibinitperiod}}}%
+      }
+      \strng{namehash}{f79ceb030bcf791e5521f87ac6ada03b}
+      \strng{fullhash}{f79ceb030bcf791e5521f87ac6ada03b}
+      \strng{fullhashraw}{f79ceb030bcf791e5521f87ac6ada03b}
+      \strng{bibnamehash}{f79ceb030bcf791e5521f87ac6ada03b}
+      \strng{authorbibnamehash}{f79ceb030bcf791e5521f87ac6ada03b}
+      \strng{authornamehash}{f79ceb030bcf791e5521f87ac6ada03b}
+      \strng{authorfullhash}{f79ceb030bcf791e5521f87ac6ada03b}
+      \strng{authorfullhashraw}{f79ceb030bcf791e5521f87ac6ada03b}
+      \field{sortinit}{C}
+      \field{sortinithash}{4d103a86280481745c9c897c925753c0}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{Proceedings of the 22nd ACM SIGKDD International Conference on Knowledge Discovery and Data Mining (KDD '16)}
+      \field{title}{{XGBoost}: A Scalable Tree Boosting System}
+      \field{year}{2016}
+      \field{pages}{785\bibrangedash 794}
+      \range{pages}{10}
+    \endentry
+    \entry{BSS}{online}{}{}
+      \name{author}{1}{}{%
+        {{hash=22cda606edf6d84fd20317a0e1f2c16f}{%
+           family={{Deutscher Wetterdienst}},
+           familyi={D\bibinitperiod}}}%
+      }
+      \strng{namehash}{22cda606edf6d84fd20317a0e1f2c16f}
+      \strng{fullhash}{22cda606edf6d84fd20317a0e1f2c16f}
+      \strng{fullhashraw}{22cda606edf6d84fd20317a0e1f2c16f}
+      \strng{bibnamehash}{22cda606edf6d84fd20317a0e1f2c16f}
+      \strng{authorbibnamehash}{22cda606edf6d84fd20317a0e1f2c16f}
+      \strng{authornamehash}{22cda606edf6d84fd20317a0e1f2c16f}
+      \strng{authorfullhash}{22cda606edf6d84fd20317a0e1f2c16f}
+      \strng{authorfullhashraw}{22cda606edf6d84fd20317a0e1f2c16f}
+      \field{sortinit}{D}
+      \field{sortinithash}{6f385f66841fb5e82009dc833c761848}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Skill Measure: {B}rier Skill Score}
+      \field{urlday}{6}
+      \field{urlmonth}{8}
+      \field{urlyear}{2026}
+      \field{year}{2026}
+      \field{urldateera}{ce}
+      \verb{urlraw}
+      \verb https://www.dwd.de/EN/ourservices/seasonals_forecasts/forecast_reliability.html
+      \endverb
+      \verb{url}
+      \verb https://www.dwd.de/EN/ourservices/seasonals_forecasts/forecast_reliability.html
+      \endverb
+    \endentry
+    \entry{DixonColes}{article}{}{}
+      \name{author}{2}{}{%
+        {{hash=1164c3d54b66774d19dad91efbbbb33e}{%
+           family={Dixon},
+           familyi={D\bibinitperiod},
+           given={Mark\bibnamedelima J.},
+           giveni={M\bibinitperiod\bibinitdelim J\bibinitperiod}}}%
+        {{hash=6c4a838648e29ebf56362b5bd4a96164}{%
+           family={Coles},
+           familyi={C\bibinitperiod},
+           given={Stuart\bibnamedelima G.},
+           giveni={S\bibinitperiod\bibinitdelim G\bibinitperiod}}}%
+      }
+      \strng{namehash}{f83cbabba2d2598e91eeb2fbff083b72}
+      \strng{fullhash}{f83cbabba2d2598e91eeb2fbff083b72}
+      \strng{fullhashraw}{f83cbabba2d2598e91eeb2fbff083b72}
+      \strng{bibnamehash}{f83cbabba2d2598e91eeb2fbff083b72}
+      \strng{authorbibnamehash}{f83cbabba2d2598e91eeb2fbff083b72}
+      \strng{authornamehash}{f83cbabba2d2598e91eeb2fbff083b72}
+      \strng{authorfullhash}{f83cbabba2d2598e91eeb2fbff083b72}
+      \strng{authorfullhashraw}{f83cbabba2d2598e91eeb2fbff083b72}
+      \field{sortinit}{D}
+      \field{sortinithash}{6f385f66841fb5e82009dc833c761848}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Journal of the Royal Statistical Society: Series C (Applied Statistics)}
+      \field{title}{Modelling Association Football Scores and Inefficiencies in the Football Betting Market}
+      \field{year}{1997}
+      \verb{urlraw}
+      \verb https://www.semanticscholar.org/paper/Modelling-Association-Football-Scores-and-in-the-Dixon-Coles/fa1f10ce322f81a88f8ca93029583350d53c5ed8
+      \endverb
+      \verb{url}
+      \verb https://www.semanticscholar.org/paper/Modelling-Association-Football-Scores-and-in-the-Dixon-Coles/fa1f10ce322f81a88f8ca93029583350d53c5ed8
+      \endverb
+    \endentry
+    \entry{Elo}{online}{}{}
+      \name{author}{1}{}{%
+        {{hash=e18be4920396412a935bbe5dbb1ccedf}{%
+           family={{eloratings.net}},
+           familyi={e\bibinitperiod}}}%
+      }
+      \strng{namehash}{e18be4920396412a935bbe5dbb1ccedf}
+      \strng{fullhash}{e18be4920396412a935bbe5dbb1ccedf}
+      \strng{fullhashraw}{e18be4920396412a935bbe5dbb1ccedf}
+      \strng{bibnamehash}{e18be4920396412a935bbe5dbb1ccedf}
+      \strng{authorbibnamehash}{e18be4920396412a935bbe5dbb1ccedf}
+      \strng{authornamehash}{e18be4920396412a935bbe5dbb1ccedf}
+      \strng{authorfullhash}{e18be4920396412a935bbe5dbb1ccedf}
+      \strng{authorfullhashraw}{e18be4920396412a935bbe5dbb1ccedf}
+      \field{sortinit}{e}
+      \field{sortinithash}{8da8a182d344d5b9047633dfc0cc9131}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{About}
+      \field{urlday}{6}
+      \field{urlmonth}{8}
+      \field{urlyear}{2026}
+      \field{urldateera}{ce}
+      \verb{urlraw}
+      \verb https://eloratings.net/about
+      \endverb
+      \verb{url}
+      \verb https://eloratings.net/about
+      \endverb
+    \endentry
+    \entry{Walk-forward}{online}{}{}
+      \name{author}{1}{}{%
+        {{hash=dead49205136307507f62c9ce6db66ba}{%
+           family={Fahad},
+           familyi={F\bibinitperiod},
+           given={Istiaq\bibnamedelima Ahmed},
+           giveni={I\bibinitperiod\bibinitdelim A\bibinitperiod}}}%
+      }
+      \strng{namehash}{dead49205136307507f62c9ce6db66ba}
+      \strng{fullhash}{dead49205136307507f62c9ce6db66ba}
+      \strng{fullhashraw}{dead49205136307507f62c9ce6db66ba}
+      \strng{bibnamehash}{dead49205136307507f62c9ce6db66ba}
+      \strng{authorbibnamehash}{dead49205136307507f62c9ce6db66ba}
+      \strng{authornamehash}{dead49205136307507f62c9ce6db66ba}
+      \strng{authorfullhash}{dead49205136307507f62c9ce6db66ba}
+      \strng{authorfullhashraw}{dead49205136307507f62c9ce6db66ba}
+      \field{sortinit}{F}
+      \field{sortinithash}{2638baaa20439f1b5a8f80c6c08a13b4}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Understanding Walk Forward Validation in Time Series Analysis: A Practical Guide}
+      \field{urlday}{6}
+      \field{urlmonth}{8}
+      \field{urlyear}{2026}
+      \field{year}{2024}
+      \field{urldateera}{ce}
+      \verb{urlraw}
+      \verb https://medium.com/@ahmedfahad04/understanding-walk-forward-validation-in-time-series-analysis-a-practical-guide-ea3814015abf
+      \endverb
+      \verb{url}
+      \verb https://medium.com/@ahmedfahad04/understanding-walk-forward-validation-in-time-series-analysis-a-practical-guide-ea3814015abf
+      \endverb
+    \endentry
+    \entry{EPL_dataset}{online}{}{}
+      \name{author}{1}{}{%
+        {{hash=8780fd6aa924d4ded8549edf180f9b11}{%
+           family={{Football-Data.co.uk}},
+           familyi={F\bibinitperiod}}}%
+      }
+      \strng{namehash}{8780fd6aa924d4ded8549edf180f9b11}
+      \strng{fullhash}{8780fd6aa924d4ded8549edf180f9b11}
+      \strng{fullhashraw}{8780fd6aa924d4ded8549edf180f9b11}
+      \strng{bibnamehash}{8780fd6aa924d4ded8549edf180f9b11}
+      \strng{authorbibnamehash}{8780fd6aa924d4ded8549edf180f9b11}
+      \strng{authornamehash}{8780fd6aa924d4ded8549edf180f9b11}
+      \strng{authorfullhash}{8780fd6aa924d4ded8549edf180f9b11}
+      \strng{authorfullhashraw}{8780fd6aa924d4ded8549edf180f9b11}
+      \field{sortinit}{F}
+      \field{sortinithash}{2638baaa20439f1b5a8f80c6c08a13b4}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{England - Football Results, Statistics \& Soccer Betting Odds Data}
+      \field{urlday}{6}
+      \field{urlmonth}{8}
+      \field{urlyear}{2026}
+      \field{urldateera}{ce}
+      \verb{urlraw}
+      \verb https://www.football-data.co.uk/englandm.php
+      \endverb
+      \verb{url}
+      \verb https://www.football-data.co.uk/englandm.php
+      \endverb
+    \endentry
+    \entry{Poisson_regression}{online}{}{}
+      \name{author}{1}{}{%
+        {{hash=31c256d7215dd14595f604966773d5fd}{%
+           family={{GeeksforGeeks community}},
+           familyi={G\bibinitperiod}}}%
+      }
+      \strng{namehash}{31c256d7215dd14595f604966773d5fd}
+      \strng{fullhash}{31c256d7215dd14595f604966773d5fd}
+      \strng{fullhashraw}{31c256d7215dd14595f604966773d5fd}
+      \strng{bibnamehash}{31c256d7215dd14595f604966773d5fd}
+      \strng{authorbibnamehash}{31c256d7215dd14595f604966773d5fd}
+      \strng{authornamehash}{31c256d7215dd14595f604966773d5fd}
+      \strng{authorfullhash}{31c256d7215dd14595f604966773d5fd}
+      \strng{authorfullhashraw}{31c256d7215dd14595f604966773d5fd}
+      \field{sortinit}{G}
+      \field{sortinithash}{32d67eca0634bf53703493fb1090a2e8}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Poisson Regression}
+      \field{urlday}{6}
+      \field{urlmonth}{8}
+      \field{urlyear}{2026}
+      \field{year}{2025}
+      \field{urldateera}{ce}
+      \verb{urlraw}
+      \verb https://www.geeksforgeeks.org/machine-learning/poisson-regression/
+      \endverb
+      \verb{url}
+      \verb https://www.geeksforgeeks.org/machine-learning/poisson-regression/
+      \endverb
+    \endentry
+    \entry{KarlisNtzoufras2003}{article}{}{}
+      \name{author}{2}{}{%
+        {{hash=cf8066be4829fb5f69dd7cd67f98db0e}{%
+           family={Karlis},
+           familyi={K\bibinitperiod},
+           given={Dimitris},
+           giveni={D\bibinitperiod}}}%
+        {{hash=cb5b80fd274dce871390ecd9ef73bfa3}{%
+           family={Ntzoufras},
+           familyi={N\bibinitperiod},
+           given={Ioannis},
+           giveni={I\bibinitperiod}}}%
+      }
+      \strng{namehash}{fdcd51fe2cf7e7d00008bfa403bf30d0}
+      \strng{fullhash}{fdcd51fe2cf7e7d00008bfa403bf30d0}
+      \strng{fullhashraw}{fdcd51fe2cf7e7d00008bfa403bf30d0}
+      \strng{bibnamehash}{fdcd51fe2cf7e7d00008bfa403bf30d0}
+      \strng{authorbibnamehash}{fdcd51fe2cf7e7d00008bfa403bf30d0}
+      \strng{authornamehash}{fdcd51fe2cf7e7d00008bfa403bf30d0}
+      \strng{authorfullhash}{fdcd51fe2cf7e7d00008bfa403bf30d0}
+      \strng{authorfullhashraw}{fdcd51fe2cf7e7d00008bfa403bf30d0}
+      \field{sortinit}{K}
+      \field{sortinithash}{c02bf6bff1c488450c352b40f5d853ab}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Journal of the Royal Statistical Society: Series D (The Statistician)}
+      \field{number}{3}
+      \field{title}{Analysis of Sports Data by Using Bivariate Poisson Models}
+      \field{volume}{52}
+      \field{year}{2003}
+      \field{pages}{381\bibrangedash 393}
+      \range{pages}{13}
+    \endentry
+    \entry{Distribution_shift}{online}{}{}
+      \name{author}{1}{}{%
+        {{hash=28736fe0869b72ae3f9d5dc358497b6f}{%
+           family={Kereki},
+           familyi={K\bibinitperiod},
+           given={Victoria\bibnamedelima Friss},
+           giveni={V\bibinitperiod\bibinitdelim F\bibinitperiod},
+           prefix={de},
+           prefixi={d\bibinitperiod}}}%
+      }
+      \strng{namehash}{28736fe0869b72ae3f9d5dc358497b6f}
+      \strng{fullhash}{28736fe0869b72ae3f9d5dc358497b6f}
+      \strng{fullhashraw}{28736fe0869b72ae3f9d5dc358497b6f}
+      \strng{bibnamehash}{28736fe0869b72ae3f9d5dc358497b6f}
+      \strng{authorbibnamehash}{28736fe0869b72ae3f9d5dc358497b6f}
+      \strng{authornamehash}{28736fe0869b72ae3f9d5dc358497b6f}
+      \strng{authorfullhash}{28736fe0869b72ae3f9d5dc358497b6f}
+      \strng{authorfullhashraw}{28736fe0869b72ae3f9d5dc358497b6f}
+      \field{sortinit}{K}
+      \field{sortinithash}{c02bf6bff1c488450c352b40f5d853ab}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{{FC} {B}arcelona Tactical Evolution (2004--2021) --- Part 1: Pass Clustering Analysis}
+      \field{urlday}{6}
+      \field{urlmonth}{8}
+      \field{urlyear}{2026}
+      \field{year}{2026}
+      \field{urldateera}{ce}
+      \verb{urlraw}
+      \verb https://medium.com/@vickyfrissdekereki/fc-barcelona-tactical-evolution-2004-2021-part-1-pass-clustering-analysis-e753df7b29b3
+      \endverb
+      \verb{url}
+      \verb https://medium.com/@vickyfrissdekereki/fc-barcelona-tactical-evolution-2004-2021-part-1-pass-clustering-analysis-e753df7b29b3
+      \endverb
+    \endentry
+    \entry{Revenue}{online}{}{}
+      \name{author}{1}{}{%
+        {{hash=e20c4ae5136425bc8d8d310638e12518}{%
+           family={Surendran},
+           familyi={S\bibinitperiod},
+           given={Shwetha},
+           giveni={S\bibinitperiod}}}%
+      }
+      \strng{namehash}{e20c4ae5136425bc8d8d310638e12518}
+      \strng{fullhash}{e20c4ae5136425bc8d8d310638e12518}
+      \strng{fullhashraw}{e20c4ae5136425bc8d8d310638e12518}
+      \strng{bibnamehash}{e20c4ae5136425bc8d8d310638e12518}
+      \strng{authorbibnamehash}{e20c4ae5136425bc8d8d310638e12518}
+      \strng{authornamehash}{e20c4ae5136425bc8d8d310638e12518}
+      \strng{authorfullhash}{e20c4ae5136425bc8d8d310638e12518}
+      \strng{authorfullhashraw}{e20c4ae5136425bc8d8d310638e12518}
+      \field{sortinit}{S}
+      \field{sortinithash}{b164b07b29984b41daf1e85279fbc5ab}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Sports Betting Hits Record \$16.96 Billion in Revenue in 2025}
+      \field{urlday}{6}
+      \field{urlmonth}{8}
+      \field{urlyear}{2026}
+      \field{year}{2026}
+      \field{urldateera}{ce}
+      \verb{urlraw}
+      \verb https://www.espn.com/espn/betting/story/_/id/48045855/sports-betting-hits-record-1696-billion-revenue-2025
+      \endverb
+      \verb{url}
+      \verb https://www.espn.com/espn/betting/story/_/id/48045855/sports-betting-hits-record-1696-billion-revenue-2025
+      \endverb
+    \endentry
+    \entry{wiki:Brier}{online}{}{}
+      \name{author}{1}{}{%
+        {{hash=b6aea1a416c89509a7df1cbb69249cb6}{%
+           family={{Wikipedia contributors}},
+           familyi={W\bibinitperiod}}}%
+      }
+      \strng{namehash}{b6aea1a416c89509a7df1cbb69249cb6}
+      \strng{fullhash}{b6aea1a416c89509a7df1cbb69249cb6}
+      \strng{fullhashraw}{b6aea1a416c89509a7df1cbb69249cb6}
+      \strng{bibnamehash}{b6aea1a416c89509a7df1cbb69249cb6}
+      \strng{authorbibnamehash}{b6aea1a416c89509a7df1cbb69249cb6}
+      \strng{authornamehash}{b6aea1a416c89509a7df1cbb69249cb6}
+      \strng{authorfullhash}{b6aea1a416c89509a7df1cbb69249cb6}
+      \strng{authorfullhashraw}{b6aea1a416c89509a7df1cbb69249cb6}
+      \field{extraname}{1}
+      \field{sortinit}{W}
+      \field{sortinithash}{4315d78024d0cea9b57a0c6f0e35ed0d}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Brier score}
+      \field{urlday}{6}
+      \field{urlmonth}{8}
+      \field{urlyear}{2026}
+      \field{year}{2026}
+      \field{urldateera}{ce}
+      \verb{urlraw}
+      \verb https://en.wikipedia.org/wiki/Brier_score
+      \endverb
+      \verb{url}
+      \verb https://en.wikipedia.org/wiki/Brier_score
+      \endverb
+    \endentry
+    \entry{ELO}{online}{}{}
+      \name{author}{1}{}{%
+        {{hash=b6aea1a416c89509a7df1cbb69249cb6}{%
+           family={{Wikipedia contributors}},
+           familyi={W\bibinitperiod}}}%
+      }
+      \strng{namehash}{b6aea1a416c89509a7df1cbb69249cb6}
+      \strng{fullhash}{b6aea1a416c89509a7df1cbb69249cb6}
+      \strng{fullhashraw}{b6aea1a416c89509a7df1cbb69249cb6}
+      \strng{bibnamehash}{b6aea1a416c89509a7df1cbb69249cb6}
+      \strng{authorbibnamehash}{b6aea1a416c89509a7df1cbb69249cb6}
+      \strng{authornamehash}{b6aea1a416c89509a7df1cbb69249cb6}
+      \strng{authorfullhash}{b6aea1a416c89509a7df1cbb69249cb6}
+      \strng{authorfullhashraw}{b6aea1a416c89509a7df1cbb69249cb6}
+      \field{extraname}{2}
+      \field{sortinit}{W}
+      \field{sortinithash}{4315d78024d0cea9b57a0c6f0e35ed0d}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Elo rating system}
+      \field{urlday}{6}
+      \field{urlmonth}{8}
+      \field{urlyear}{2026}
+      \field{year}{2026}
+      \field{urldateera}{ce}
+      \verb{urlraw}
+      \verb https://en.wikipedia.org/wiki/Elo_rating_system
+      \endverb
+      \verb{url}
+      \verb https://en.wikipedia.org/wiki/Elo_rating_system
+      \endverb
+    \endentry
+  \enddatalist
+\endrefsection
+\endinput
+

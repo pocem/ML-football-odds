@@ -1,0 +1,1069 @@
+Leicester
+10
+0.911.95
+BournemouthManchester City
+32
+1.372.76
+FulhamWest Ham
+41
+4.391.18
+IpswichArsenal
+31
+3.251.27
+SouthamptonBrentford
+53
+4.140.70
+Wolverhampton WanderersEverton
+00
+0.691.79
+Newcastle United
+
+
+Chelsea
+11
+2.281.67
+Nottingham ForestAston Villa
+00
+0.530.45
+Manchester UnitedBrighton
+32
+1.971.09
+Tottenham
+
+
+Tottenham
+41
+1.440.86
+West HamFulham
+13
+2.631.44
+Aston VillaIpswich
+02
+1.171.61
+EvertonManchester United
+21
+1.770.89
+BrentfordNewcastle United
+01
+1.941.68
+BrightonSouthampton
+23
+2.432.84
+LeicesterBournemouth
+20
+2.180.74
+Arsenal
+
+Wolverhampton Wanderers
+12
+0.761.37
+Manchester CityLiverpool
+21
+2.231.34
+Chelsea
+
+Nottingham Forest
+10
+1.890.84
+Crystal PalaceLeicester
+13
+0.832.54
+Nottingham Forest
+
+Manchester City
+10
+3.160.37
+SouthamptonAston Villa
+11
+1.970.33
+BournemouthBrentford
+43
+4.101.66
+IpswichBrighton
+22
+1.511.11
+Wolverhampton WanderersEverton
+11
+0.881.50
+Fulham
+
+Chelsea
+21
+1.621.74
+Newcastle UnitedCrystal Palace
+10
+0.981.02
+TottenhamWest Ham
+21
+2.992.63
+Manchester UnitedArsenal
+22
+1.091.35
+Liverpool
+
+Newcastle United
+10
+0.860.91
+ArsenalBournemouth
+21
+2.452.35
+Manchester CityIpswich
+11
+1.342.34
+LeicesterLiverpool
+21
+1.811.02
+BrightonNottingham Forest
+30
+2.350.13
+West HamSouthampton
+10
+0.541.79
+EvertonWolverhampton Wanderers
+22
+1.652.65
+Crystal Palace
+
+Tottenham
+41
+2.102.49
+Aston VillaManchester United
+11
+2.161.21
+Chelsea
+
+Fulham
+21
+1.430.74
+BrentfordBrentford
+32
+1.562.49
+BournemouthCrystal Palace
+02
+1.962.25
+FulhamWest Ham
+00
+1.120.87
+EvertonWolverhampton Wanderers
+20
+0.910.79
+SouthamptonBrighton
+21
+2.872.60
+Manchester CityLiverpool
+20
+2.681.66
+Aston Villa
+
+Nottingham Forest
+13
+1.181.87
+Newcastle UnitedManchester United
+30
+1.240.42
+LeicesterTottenham
+12
+1.752.18
+IpswichChelsea
+11
+1.241.96
+Arsenal
+
+Leicester
+12
+0.972.82
+ChelseaBournemouth
+12
+1.911.23
+BrightonArsenal
+30
+1.660.40
+Nottingham ForestEverton
+00
+1.601.34
+BrentfordAston Villa
+22
+3.041.61
+Crystal PalaceFulham
+14
+0.721.34
+Wolverhampton WanderersManchester City
+04
+2.163.30
+Tottenham
+
+Southampton
+23
+1.543.19
+LiverpoolIpswich
+11
+1.991.27
+Manchester United
+
+Newcastle United
+02
+1.500.94
+West HamBrighton
+11
+1.870.93
+Southampton
+
+Brentford
+41
+2.220.91
+LeicesterCrystal Palace
+11
+2.300.02
+Newcastle UnitedNottingham Forest
+10
+1.770.46
+IpswichWolverhampton Wanderers
+24
+0.873.08
+BournemouthWest Ham
+25
+1.244.00
+Arsenal
+
+Chelsea
+30
+1.950.88
+Aston VillaManchester United
+40
+1.760.77
+EvertonTottenham
+11
+1.011.57
+FulhamLiverpool
+20
+3.700.75
+Manchester City
+
+Ipswich
+01
+0.471.65
+Crystal PalaceLeicester
+31
+2.782.88
+West HamEverton
+40
+1.500.85
+Wolverhampton WanderersManchester City
+30
+3.200.80
+Nottingham ForestNewcastle United
+33
+1.522.23
+LiverpoolSouthampton
+15
+1.915.83
+ChelseaArsenal
+20
+2.970.26
+Manchester UnitedAston Villa
+31
+3.221.13
+Brentford
+
+Fulham
+31
+0.671.10
+BrightonBournemouth
+10
+3.280.62
+TottenhamAston Villa
+10
+2.510.39
+SouthamptonBrentford
+42
+1.751.96
+Newcastle UnitedCrystal Palace
+22
+1.211.58
+Manchester CityManchester United
+23
+1.470.65
+Nottingham Forest
+
+
+Fulham
+11
+0.152.43
+ArsenalIpswich
+12
+1.573.49
+BournemouthLeicester
+22
+1.421.12
+BrightonTottenham
+34
+3.252.57
+Chelsea
+
+West Ham
+21
+1.201.48
+Wolverhampton WanderersLiverpool
+22
+2.101.29
+FulhamArsenal
+00
+1.310.13
+EvertonWolverhampton Wanderers
+12
+1.241.73
+IpswichNewcastle United
+40
+3.950.19
+LeicesterNottingham Forest
+21
+2.290.39
+Aston Villa
+
+Brighton
+13
+1.323.01
+Crystal PalaceManchester City
+12
+0.642.05
+Manchester UnitedChelsea
+21
+2.591.66
+BrentfordSouthampton
+05
+1.273.89
+Tottenham
+
+Bournemouth
+11
+2.051.82
+West HamAston Villa
+21
+2.061.10
+Manchester CityBrentford
+02
+0.770.96
+Nottingham ForestWest Ham
+11
+1.231.34
+BrightonIpswich
+04
+1.063.23
+Newcastle UnitedCrystal Palace
+15
+1.613.05
+Arsenal
+
+Fulham
+00
+1.250.28
+SouthamptonEverton
+00
+1.071.52
+ChelseaManchester United
+03
+2.291.83
+BournemouthLeicester
+03
+0.791.14
+Wolverhampton WanderersTottenham
+36
+1.205.20
+Liverpool
+
+
+Manchester City
+11
+2.520.65
+EvertonBournemouth
+00
+1.200.50
+Crystal PalaceChelsea
+12
+1.561.78
+FulhamNewcastle United
+30
+2.830.23
+Aston VillaNottingham Forest
+10
+1.301.06
+TottenhamSouthampton
+01
+2.201.90
+West HamWolverhampton Wanderers
+20
+0.830.36
+Manchester UnitedLiverpool
+31
+1.900.22
+Leicester
+
+Brighton
+00
+1.340.96
+BrentfordArsenal
+10
+2.160.08
+IpswichLeicester
+02
+1.841.58
+Manchester CityCrystal Palace
+21
+3.051.22
+SouthamptonEverton
+02
+0.622.03
+Nottingham ForestFulham
+22
+0.961.71
+BournemouthTottenham
+22
+2.280.64
+Wolverhampton WanderersWest Ham
+05
+0.523.30
+Liverpool
+
+Aston Villa
+22
+1.880.94
+BrightonIpswich
+20
+1.501.61
+ChelseaManchester United
+02
+1.002.24
+Newcastle UnitedBrentford
+13
+0.272.00
+Arsenal
+
+Tottenham
+12
+1.002.43
+Newcastle UnitedBournemouth
+10
+2.620.56
+EvertonAston Villa
+21
+2.350.82
+LeicesterCrystal Palace
+11
+1.281.52
+ChelseaManchester City
+41
+1.981.53
+West HamSouthampton
+05
+0.255.55
+BrentfordBrighton
+11
+1.771.81
+ArsenalFulham
+22
+2.651.44
+IpswichLiverpool
+22
+2.861.67
+Manchester United
+
+Wolverhampton Wanderers
+03
+1.902.57
+Nottingham ForestBrentford
+22
+2.392.65
+Manchester CityWest Ham
+32
+0.942.84
+FulhamChelsea
+22
+2.541.15
+BournemouthNottingham Forest
+11
+0.532.72
+Liverpool
+
+Everton
+01
+1.231.29
+Aston VillaLeicester
+02
+2.102.26
+Crystal PalaceNewcastle United
+30
+2.131.47
+Wolverhampton WanderersArsenal
+21
+2.260.78
+TottenhamIpswich
+02
+0.271.06
+BrightonManchester United
+31
+3.111.37
+Southampton
+
+
+Newcastle United
+14
+0.842.70
+BournemouthBrentford
+02
+1.204.16
+LiverpoolLeicester
+02
+0.682.37
+FulhamWest Ham
+02
+0.221.63
+Crystal PalaceArsenal
+22
+1.641.21
+Aston VillaEverton
+32
+2.561.36
+TottenhamManchester United
+13
+1.322.17
+BrightonNottingham Forest
+32
+2.361.26
+SouthamptonIpswich
+06
+0.803.20
+Manchester City
+
+Chelsea
+31
+3.151.07
+Wolverhampton WanderersBournemouth
+50
+2.831.00
+Nottingham ForestBrighton
+01
+0.640.87
+EvertonLiverpool
+41
+2.170.80
+IpswichSouthampton
+13
+0.833.08
+Newcastle UnitedWolverhampton Wanderers
+01
+0.510.89
+ArsenalManchester City
+31
+2.231.50
+Chelsea
+
+Crystal Palace
+12
+1.231.92
+BrentfordTottenham
+12
+1.271.40
+LeicesterAston Villa
+11
+0.911.68
+West HamFulham
+01
+0.560.20
+Manchester United
+
+
+Nottingham Forest
+70
+4.070.76
+BrightonBournemouth
+02
+1.652.72
+LiverpoolEverton
+40
+3.110.45
+LeicesterIpswich
+12
+1.951.18
+SouthamptonNewcastle United
+12
+1.231.61
+FulhamWolverhampton Wanderers
+20
+2.000.74
+Aston VillaBrentford
+02
+1.660.95
+TottenhamManchester United
+02
+1.512.45
+Crystal PalaceArsenal
+51
+1.530.74
+Manchester City
+
+Chelsea
+21
+1.391.19
+West HamEverton
+22
+0.910.93
+LiverpoolBrighton
+30
+2.070.65
+ChelseaLeicester
+02
+0.231.75
+ArsenalAston Villa
+11
+2.900.33
+IpswichFulham
+21
+2.210.33
+Nottingham ForestManchester City
+40
+2.120.16
+Newcastle UnitedSouthampton
+13
+0.972.09
+BournemouthWest Ham
+01
+0.671.96
+BrentfordCrystal Palace
+12
+2.311.02
+Everton
+
+Liverpool
+21
+1.871.05
+Wolverhampton WanderersTottenham
+10
+1.971.43
+Manchester United
+
+
+Aston Villa
+22
+1.022.04
+LiverpoolLeicester
+04
+0.732.03
+Brentford
+
+Everton
+22
+2.100.65
+Manchester UnitedBournemouth
+01
+0.632.10
+Wolverhampton WanderersArsenal
+01
+1.371.03
+West HamFulham
+02
+0.231.46
+Crystal PalaceIpswich
+14
+1.151.59
+TottenhamSouthampton
+04
+0.155.12
+BrightonAston Villa
+21
+2.692.17
+ChelseaNewcastle United
+43
+3.462.39
+Nottingham ForestManchester City
+02
+0.580.81
+Liverpool
+
+
+Brighton
+21
+2.581.70
+BournemouthWolverhampton Wanderers
+12
+0.931.43
+FulhamCrystal Palace
+41
+4.030.67
+Aston VillaChelsea
+40
+2.980.85
+SouthamptonBrentford
+11
+1.341.45
+EvertonNottingham Forest
+00
+0.511.32
+ArsenalTottenham
+01
+1.282.39
+Manchester CityManchester United
+32
+1.401.04
+IpswichLiverpool
+20
+1.400.46
+Newcastle UnitedWest Ham
+20
+1.700.29
+Leicester
+
+Nottingham Forest
+10
+0.500.72
+Manchester CityBrighton
+21
+1.940.71
+FulhamCrystal Palace
+10
+3.141.63
+IpswichLiverpool
+31
+4.990.51
+SouthamptonBrentford
+01
+0.641.30
+Aston VillaWolverhampton Wanderers
+11
+0.811.37
+Everton
+
+Chelsea
+10
+1.770.11
+LeicesterTottenham
+22
+1.352.23
+BournemouthManchester United
+11
+1.311.83
+Arsenal
+
+West Ham
+01
+0.821.63
+Newcastle UnitedEverton
+11
+1.190.52
+West HamIpswich
+24
+0.521.31
+Nottingham ForestManchester City
+22
+2.032.11
+BrightonSouthampton
+12
+1.280.54
+Wolverhampton WanderersBournemouth
+12
+2.031.60
+Brentford
+
+Arsenal
+10
+0.700.29
+ChelseaFulham
+20
+1.041.41
+TottenhamLeicester
+03
+1.301.14
+Manchester United
+
+
+Arsenal
+21
+2.301.44
+FulhamWolverhampton Wanderers
+10
+1.101.73
+West HamNottingham Forest
+10
+0.511.87
+Manchester UnitedBrighton
+03
+0.561.21
+Aston VillaBournemouth
+12
+2.001.41
+IpswichManchester City
+20
+2.070.10
+LeicesterNewcastle United
+21
+2.271.53
+BrentfordSouthampton
+11
+0.690.94
+Crystal PalaceLiverpool
+10
+1.300.82
+Everton
+
+Chelsea
+10
+1.301.40
+TottenhamEverton
+11
+1.231.40
+ArsenalCrystal Palace
+21
+0.441.27
+BrightonIpswich
+12
+0.872.81
+Wolverhampton WanderersWest Ham
+22
+0.911.95
+BournemouthAston Villa
+21
+2.630.97
+Nottingham ForestBrentford
+00
+1.361.48
+ChelseaFulham
+32
+1.731.41
+LiverpoolTottenham
+31
+2.650.78
+SouthamptonManchester United
+00
+1.230.69
+Manchester City
+
+Leicester
+03
+0.353.44
+Newcastle UnitedManchester City
+52
+4.601.34
+Crystal PalaceBrighton
+22
+3.701.98
+LeicesterNottingham Forest
+01
+0.421.26
+EvertonSouthampton
+03
+0.413.00
+Aston VillaArsenal
+11
+0.770.59
+BrentfordChelsea
+22
+2.911.60
+IpswichLiverpool
+21
+1.431.47
+West HamWolverhampton Wanderers
+42
+2.231.63
+TottenhamNewcastle United
+41
+2.640.79
+Manchester United
+
+Bournemouth
+10
+1.861.07
+FulhamNewcastle United
+50
+2.332.38
+Crystal PalaceBrentford
+42
+2.961.24
+BrightonCrystal Palace
+00
+0.340.66
+BournemouthEverton
+02
+0.821.88
+Manchester CityWest Ham
+11
+0.980.92
+SouthamptonAston Villa
+41
+3.051.27
+Newcastle UnitedFulham
+12
+0.310.75
+ChelseaIpswich
+04
+0.192.81
+ArsenalManchester United
+01
+1.140.19
+Wolverhampton WanderersLeicester
+01
+0.234.53
+Liverpool
+
+Tottenham
+12
+2.400.56
+Nottingham ForestManchester City
+21
+1.361.86
+Aston VillaArsenal
+22
+1.922.51
+Crystal PalaceChelsea
+10
+0.770.92
+EvertonBrighton
+32
+1.291.24
+West HamNewcastle United
+30
+4.120.13
+IpswichSouthampton
+12
+0.942.00
+FulhamWolverhampton Wanderers
+30
+2.581.05
+LeicesterBournemouth
+11
+0.611.91
+Manchester UnitedLiverpool
+51
+2.510.51
+Tottenham
+
+Nottingham Forest
+02
+0.671.52
+BrentfordManchester City
+10
+0.860.62
+Wolverhampton WanderersAston Villa
+10
+1.290.70
+FulhamEverton
+22
+0.811.14
+IpswichLeicester
+20
+1.610.55
+SouthamptonArsenal
+12
+2.051.42
+BournemouthWest Ham
+11
+1.150.85
+TottenhamBrighton
+11
+0.691.64
+Newcastle UnitedBrentford
+43
+3.591.13
+Manchester UnitedChelsea
+31
+3.521.43
+Liverpool
+
+Crystal Palace
+11
+2.340.64
+Nottingham ForestFulham
+13
+1.211.33
+EvertonIpswich
+01
+0.721.32
+BrentfordSouthampton
+00
+0.141.58
+Manchester CityWolverhampton Wanderers
+02
+0.731.41
+BrightonBournemouth
+01
+1.021.12
+Aston VillaNewcastle United
+20
+1.670.65
+ChelseaManchester United
+02
+2.312.16
+West HamNottingham Forest
+22
+1.771.23
+LeicesterTottenham
+02
+0.813.99
+Crystal PalaceLiverpool
+22
+2.752.19
+Arsenal
+
+Aston Villa
+20
+1.690.52
+TottenhamChelsea
+10
+1.300.34
+Manchester UnitedEverton
+20
+2.681.05
+SouthamptonWest Ham
+12
+0.852.15
+Nottingham ForestBrentford
+23
+2.431.62
+FulhamLeicester
+20
+0.791.37
+IpswichArsenal
+10
+1.162.25
+Newcastle United
+
+Brighton
+32
+2.183.06
+LiverpoolCrystal Palace
+42
+1.681.43
+Wolverhampton WanderersManchester City
+31
+1.600.96
+Bournemouth
+
+Nottingham Forest
+01
+1.581.31
+ChelseaNewcastle United
+01
+1.161.07
+EvertonManchester United
+20
+2.960.34
+Aston VillaLiverpool
+11
+1.921.41
+Crystal PalaceTottenham
+14
+1.853.12
+BrightonSouthampton
+12
+0.602.41
+ArsenalWolverhampton Wanderers
+11
+1.111.97
+BrentfordBournemouth
+20
+2.720.16
+LeicesterIpswich
+13
+0.890.97
+West HamFulham
+02
+2.222.46
+Manchester City

@@ -171,7 +171,23 @@ def create_team_df(df):
 
     return team_df
 
-def add_table_positions(df):
+def add_table_positions(df, prior_positions=None, new_team_default=15):
+    """Adds HomeTablePos/AwayTablePos/TablePosDiff.
+
+    For each team's first 3 matches of the season (before the live table is
+    trustworthy), the position used is:
+      - prior_positions[team] -- that team's FINAL position in the previous
+        season, if prior_positions was supplied and the team is in it.
+      - new_team_default (15) -- if prior_positions was supplied but this
+        particular team isn't in it (newly promoted, no top-flight history).
+      - 10 (flat neutral guess) -- if prior_positions is None, i.e. there is
+        no previous season at all to draw from (the first season in a
+        multi-season build, or a standalone single-season call).
+
+    Returns (df, final_positions) -- final_positions is THIS season's final
+    standings as {team: position}, meant to be passed as next season's
+    prior_positions so position estimates carry across season boundaries.
+    """
     df = df.sort_values(['Date', 'Time']).reset_index(drop=True)
 
     teams = sorted(
@@ -202,9 +218,17 @@ def add_table_positions(df):
         standings['Position'] = standings.index + 1
         pos_lookup = dict(zip(standings['index'], standings['Position']))
 
-        # default early-season rule
-        home_pos.append(10 if played[home] < 3 else pos_lookup[home])
-        away_pos.append(10 if played[away] < 3 else pos_lookup[away])
+        # Early-season estimate: carry over last season's final position
+        # instead of a flat guess, now that this spans multiple seasons.
+        if prior_positions is None:
+            home_default = 10
+            away_default = 10
+        else:
+            home_default = prior_positions.get(home, new_team_default)
+            away_default = prior_positions.get(away, new_team_default)
+
+        home_pos.append(home_default if played[home] < 3 else pos_lookup[home])
+        away_pos.append(away_default if played[away] < 3 else pos_lookup[away])
 
         # update table AFTER recording positions
         hg = row['FTHG']
@@ -231,7 +255,101 @@ def add_table_positions(df):
     df['AwayTablePos'] = away_pos
     df['TablePosDiff'] = df['AwayTablePos'] - df['HomeTablePos']
 
-    return df
+    final_standings = (
+        table
+        .sort_values(['Pts', 'GD', 'GF'], ascending=False)
+        .reset_index()
+    )
+    final_positions = dict(zip(final_standings['index'], final_standings.index + 1))
+
+    return df, final_positions
+
+
+def add_points_per_game(df, prior_ppg=None, new_team_default_ppg=1.0):
+    """Adds HomePPG/AwayPPG/PPGDiff -- points-per-game instead of
+    add_table_positions()'s ordinal rank. Rank has a real distortion: the
+    gap between 1st and 2nd isn't remotely the same as the gap between 19th
+    and 20th (a title race and a relegation battle can both compress to "1
+    position" while representing very different actual quality gaps). PPG
+    is a genuine rate/interval measure, so a straight difference between two
+    teams' PPG doesn't have that problem. Points-PER-GAME rather than raw
+    cumulative points, so early-season and late-season values stay directly
+    comparable (10 points after 5 games is not the same team strength
+    signal as 10 points after 20 games).
+
+    Same early-season carryover idea as add_table_positions: for each
+    team's first 3 matches of a season, the value used is:
+      - prior_ppg[team] -- that team's final PPG (points/38) from the
+        previous season, if prior_ppg was supplied and the team is in it.
+      - new_team_default_ppg (1.0, ~a 38-point pace -- roughly a
+        newly-promoted side's expected debut level) -- if prior_ppg was
+        supplied but this team isn't in it (newly promoted).
+      - new_team_default_ppg for everyone -- if prior_ppg is None, i.e.
+        there's no previous season at all to draw from.
+
+    PPGDiff = HomePPG - AwayPPG, so positive means the home team has been
+    accumulating points faster (same "positive = home advantage" direction
+    as TablePosDiff, for a like-for-like swap in any covariate list).
+
+    Returns (df, final_ppg) -- final_ppg is THIS season's final PPG as
+    {team: ppg}, to hand off as next season's prior_ppg.
+    """
+    df = df.sort_values(['Date', 'Time']).reset_index(drop=True)
+
+    teams = sorted(
+        set(df['HomeTeam']).union(set(df['AwayTeam']))
+    )
+
+    pts = {team: 0 for team in teams}
+    played = {team: 0 for team in teams}
+
+    home_ppg = []
+    away_ppg = []
+
+    for _, row in df.iterrows():
+
+        home = row['HomeTeam']
+        away = row['AwayTeam']
+
+        if prior_ppg is None:
+            home_default = new_team_default_ppg
+            away_default = new_team_default_ppg
+        else:
+            home_default = prior_ppg.get(home, new_team_default_ppg)
+            away_default = prior_ppg.get(away, new_team_default_ppg)
+
+        home_live = pts[home] / played[home] if played[home] > 0 else home_default
+        away_live = pts[away] / played[away] if played[away] > 0 else away_default
+
+        home_ppg.append(home_default if played[home] < 3 else home_live)
+        away_ppg.append(away_default if played[away] < 3 else away_live)
+
+        # update AFTER recording, same as add_table_positions
+        hg = row['FTHG']
+        ag = row['FTAG']
+
+        if hg > ag:
+            pts[home] += 3
+        elif hg < ag:
+            pts[away] += 3
+        else:
+            pts[home] += 1
+            pts[away] += 1
+
+        played[home] += 1
+        played[away] += 1
+
+    df['HomePPG'] = home_ppg
+    df['AwayPPG'] = away_ppg
+    df['PPGDiff'] = df['HomePPG'] - df['AwayPPG']
+
+    final_ppg = {
+        team: (pts[team] / played[team] if played[team] > 0 else new_team_default_ppg)
+        for team in teams
+    }
+
+    return df, final_ppg
+
 
 def add_rolling_features(team_df):
     """Compute all rolling features"""
@@ -471,7 +589,7 @@ def export_dataset(matches, path="dataset/13-14.csv"):
 
 if __name__ == "__main__":
     raw_df = load_data("pl13-14.csv")
-    df = add_table_positions(raw_df)   
+    df, _ = add_table_positions(raw_df)
     team_df = create_team_df(df)       
     team_df = add_rolling_features(team_df)
     matches = build_match_dataset(team_df, df)
