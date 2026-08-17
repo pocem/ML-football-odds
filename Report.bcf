@@ -2373,25 +2373,28 @@
     <bcf:datasource type="file" datatype="bibtex" glob="false">references.bib</bcf:datasource>
   </bcf:bibdata>
   <bcf:section number="0">
-    <bcf:citekey order="1" intorder="1">DixonColes</bcf:citekey>
-    <bcf:citekey order="2" intorder="1">KarlisNtzoufras2003</bcf:citekey>
-    <bcf:citekey order="3" intorder="1">Distribution_shift</bcf:citekey>
-    <bcf:citekey order="4" intorder="1">ELO</bcf:citekey>
-    <bcf:citekey order="5" intorder="1">Elo</bcf:citekey>
-    <bcf:citekey order="6" intorder="1">xG</bcf:citekey>
-    <bcf:citekey order="7" intorder="1">Revenue</bcf:citekey>
-    <bcf:citekey order="8" intorder="1">EPL_dataset</bcf:citekey>
-    <bcf:citekey order="9" intorder="1">Walk-forward</bcf:citekey>
+    <bcf:citekey order="1" intorder="1">Distribution_shift</bcf:citekey>
+    <bcf:citekey order="2" intorder="1">ELO</bcf:citekey>
+    <bcf:citekey order="3" intorder="1">Elo</bcf:citekey>
+    <bcf:citekey order="4" intorder="1">xG</bcf:citekey>
+    <bcf:citekey order="5" intorder="1">Revenue</bcf:citekey>
+    <bcf:citekey order="6" intorder="1">EPL_dataset</bcf:citekey>
+    <bcf:citekey order="7" intorder="1">Levitt2004Gambling</bcf:citekey>
+    <bcf:citekey order="8" intorder="1">Walk-forward</bcf:citekey>
+    <bcf:citekey order="9" intorder="1">HastieTibshiraniFriedman2009ESL</bcf:citekey>
     <bcf:citekey order="10" intorder="1">Poisson_regression</bcf:citekey>
     <bcf:citekey order="11" intorder="1">DixonColes</bcf:citekey>
     <bcf:citekey order="12" intorder="1">KarlisNtzoufras2003</bcf:citekey>
     <bcf:citekey order="13" intorder="1">Breiman2001RandomForests</bcf:citekey>
     <bcf:citekey order="14" intorder="1">ChenGuestrin2016XGBoost</bcf:citekey>
-    <bcf:citekey order="15" intorder="1">MLeval</bcf:citekey>
-    <bcf:citekey order="16" intorder="1">wiki:Brier</bcf:citekey>
+    <bcf:citekey order="15" intorder="1">McInnesHealyMelville2018UMAP</bcf:citekey>
+    <bcf:citekey order="16" intorder="1">MLeval</bcf:citekey>
     <bcf:citekey order="17" intorder="1">wiki:Brier</bcf:citekey>
-    <bcf:citekey order="18" intorder="1">BSS</bcf:citekey>
-    <bcf:citekey order="19" intorder="1">Climatology</bcf:citekey>
+    <bcf:citekey order="18" intorder="1">wiki:Brier</bcf:citekey>
+    <bcf:citekey order="19" intorder="1">BSS</bcf:citekey>
+    <bcf:citekey order="20" intorder="1">Climatology</bcf:citekey>
+    <bcf:citekey order="21" intorder="1">BaioBlangiardo2010BayesianDixonColes</bcf:citekey>
+    <bcf:citekey order="22" intorder="1">McHaleScarf2011Copula</bcf:citekey>
   </bcf:section>
   <!-- SORTING TEMPLATES -->
   <bcf:sortingtemplate name="nty">

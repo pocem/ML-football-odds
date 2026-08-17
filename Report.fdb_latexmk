@@ -1,13 +1,13 @@
 # Fdb version 4
-["biber Report"] 1786119191.58271 "Report.bcf" "Report.bbl" "Report" 1786119866.08033 0
-  "Report.bcf" 1786119865.81544 109825 87d6a2acd33b0d48e51ff93c1d932a4f "pdflatex"
-  "references.bib" 1786096493.29743 4800 44260e3600d0c3f944029f04b19419a1 ""
+["biber Report"] 1786887196.63621 "Report.bcf" "Report.bbl" "Report" 1786958435.47355 0
+  "Report.bcf" 1786958435.22117 110098 4ceac48f9d779b23c121c1630f0e1022 "pdflatex"
+  "references.bib" 1786886512.87731 6306 cf5f9b9c1492e74a4261ba5fbb56f570 ""
   (generated)
   "Report.bbl"
   "Report.blg"
   (rewritten before read)
-["pdflatex"] 1786119864.12027 "c:/Users/misog/SCHOOL/Summer project/ML-football-odds/Report.tex" "Report.pdf" "Report" 1786119866.08105 0
-  "C:/Users/misog/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map" 1786011500.19598 80909 eab91d9745dd2edfd62a31d53cd5fe15 ""
+["pdflatex"] 1786958433.16242 "c:/Users/misog/SCHOOL/Summer project/ML-football-odds/Report.tex" "Report.pdf" "Report" 1786958435.4742 0
+  "C:/Users/misog/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map" 1786874513.10935 80909 eab91d9745dd2edfd62a31d53cd5fe15 ""
   "C:/Users/misog/AppData/Local/MiKTeX/fonts/pk/ljfour/jknappen/ec/dpi600/tcrm1000.pk" 1786011505.19864 11548 8b49ee69f414ad864847a5612a28eeed ""
   "C:/Users/misog/AppData/Local/MiKTeX/fonts/pk/ljfour/jknappen/ec/dpi600/tcti1000.pk" 1786011585.46637 14064 08cc21bb55f60872dbd6b73453a8f87a ""
   "C:/Users/misog/AppData/Local/MiKTeX/miktex/data/le/pdftex/pdflatex.fmt" 1786011473.31402 13333486 260cb67a8bcb696c2c20799324b58f44 ""
@@ -48,6 +48,7 @@
   "C:/Users/misog/AppData/Local/Programs/MiKTeX/fonts/tfm/public/cm/cmti10.tfm" 1136765053 1480 aa8e34af0eb6a2941b776984cf1dfdc4 ""
   "C:/Users/misog/AppData/Local/Programs/MiKTeX/fonts/tfm/public/cm/cmtt10.tfm" 1136765053 768 1321e9409b4137d6fb428ac9dc956269 ""
   "C:/Users/misog/AppData/Local/Programs/MiKTeX/fonts/tfm/public/cm/cmtt12.tfm" 1136765053 772 9a936b7f5e2ff0557fce0f62822f0bbf ""
+  "C:/Users/misog/AppData/Local/Programs/MiKTeX/fonts/tfm/public/cm/cmtt8.tfm" 1136765053 768 d7b9a2629a0c353102ad947dc9221d49 ""
   "C:/Users/misog/AppData/Local/Programs/MiKTeX/fonts/tfm/public/cm/cmtt9.tfm" 1136765053 764 c98a2af25c99b73a368cf7336e255190 ""
   "C:/Users/misog/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx10.pfb" 1247596666 34811 78b52f49e893bcba91bd7581cdc144c0 ""
   "C:/Users/misog/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx12.pfb" 1247596666 32080 340ef9bf63678554ee606688e7b5339d ""
@@ -103,6 +104,7 @@
   "C:/Users/misog/AppData/Local/Programs/MiKTeX/tex/latex/booktabs/booktabs.sty" 1579093635 6253 71987c78d3b294f5a70855024b9b06cc ""
   "C:/Users/misog/AppData/Local/Programs/MiKTeX/tex/latex/epstopdf-pkg/epstopdf-base.sty" 1623003186 13886 d1306dcf79a944f6988e688c1785f9ce ""
   "C:/Users/misog/AppData/Local/Programs/MiKTeX/tex/latex/etoolbox/etoolbox.sty" 1759409308 46885 8953c67ffba03252c6090aa19568b8ba ""
+  "C:/Users/misog/AppData/Local/Programs/MiKTeX/tex/latex/float/float.sty" 1469023953 6916 f35860e0302c70cb81cb70b0a7937693 ""
   "C:/Users/misog/AppData/Local/Programs/MiKTeX/tex/latex/geometry/geometry.cfg" 1773583286 1083 f69f5eb2d8e249286c59dd1340122e59 ""
   "C:/Users/misog/AppData/Local/Programs/MiKTeX/tex/latex/geometry/geometry.sty" 1773583286 41904 7711079366884e0d15963c9d40019853 ""
   "C:/Users/misog/AppData/Local/Programs/MiKTeX/tex/latex/graphics-cfg/color.cfg" 1465894292 1213 620bba36b25224fa9b7e1ccb4ecb76fd ""
@@ -125,18 +127,22 @@
   "C:/Users/misog/AppData/Local/Programs/MiKTeX/tex/latex/listings/lstpatch.sty" 1763898348 353 9024412f43e92cd5b21fe9ded82d0610 ""
   "C:/Users/misog/AppData/Local/Programs/MiKTeX/tex/latex/logreq/logreq.def" 1280941015 1620 fb1c32b818f2058eca187e5c41dfae77 ""
   "C:/Users/misog/AppData/Local/Programs/MiKTeX/tex/latex/logreq/logreq.sty" 1280941015 6187 b27afc771af565d3a9ff1ca7d16d0d46 ""
+  "C:/Users/misog/AppData/Local/Programs/MiKTeX/tex/latex/multirow/multirow.sty" 1731767677 6696 886c9f3087d0b973ed2c19aa79cb3023 ""
   "C:/Users/misog/AppData/Local/Programs/MiKTeX/tex/latex/tools/array.sty" 1761901070 15651 9d7c62df82cb29a555c00550babfe364 ""
   "C:/Users/misog/AppData/Local/Programs/MiKTeX/tex/latex/url/url.sty" 1388490452 12796 8edb7d69a20b857904dd0ea757c14ec9 ""
   "C:/Users/misog/AppData/Local/Programs/MiKTeX/tex/latex/xcolor/xcolor.sty" 1729265222 55384 b454dec21c2d9f45ec0b793f0995b992 ""
-  "Report.aux" 1786119865.77714 9805 cbac86fa57863b86a945e508ec183b23 "pdflatex"
-  "Report.bbl" 1786119193.90489 23544 59347544300aed1b8e49639aba0d7f98 "biber Report"
-  "Report.run.xml" 1786119865.81746 2319 76da245088571ee59f192a5621192866 "pdflatex"
-  "c:/Users/misog/SCHOOL/Summer project/ML-football-odds/Report.tex" 1786119861.0356 60548 2d959b2cc6c2eb85085da33b16d3a479 ""
+  "Report.aux" 1786958435.18174 13252 2e94f7f5db1651d6fd7a90121cdad3d7 "pdflatex"
+  "Report.bbl" 1786887198.77919 31103 1422e2b7a0a4d0b34237e4ff5bfab4f2 "biber Report"
+  "Report.run.xml" 1786958435.22594 2319 76da245088571ee59f192a5621192866 "pdflatex"
+  "c:/Users/misog/SCHOOL/Summer project/ML-football-odds/Report.tex" 1786958432.43835 93102 13b000dc3073ff03e70b91cf6f1f919f ""
+  "images/bivariate_confusion_matrix.png" 1786613538.90422 116114 ecbe8b834cbf6de71c65655eeb490086 ""
   "images/bivariate_grid_example.png" 1786022560.83139 103993 990613bd84c34da32eec09d589fd7fc9 ""
-  "images/eda_bigsix.png" 1785763386.20157 132972 8d9d8cbb70cf93e1ad78f56b8ae1b826 ""
+  "images/eda_bigsix.png" 1786442326.19222 286609 56ea505a867b5b402900e2026f4532b4 ""
   "images/eda_home_adv.png" 1785759554.27838 79816 454b2d38b1fb9e2f1de760764b72eec3 ""
   "images/eda_sot.png" 1785759523.95648 50397 a1a969a47b3fc17f42a9002232ff51a0 ""
+  "images/feature_correlation_matrix.png" 1786440378.13156 322326 afc9df230643770c903becbef9c6bfcc ""
   "images/goals_distribution.png" 1785151309.8819 17759 ed4f37fff0f7e2753830ae9d8a50b335 ""
+  "images/umap_ncomponents_sweep.png" 1786548357.6305 93295 20a3853ae3c5eb82495464d89960c7d1 ""
   "images/walkforward_intraseason_scheme.png" 1785764508.98869 77000 ff33b3e1f590db7c5e6a4e122c16df46 ""
   "images/walkforward_scheme.png" 1785764508.84052 44707 13ed915707037941f835e0754af6caa4 ""
   (generated)

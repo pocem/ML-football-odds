@@ -53,39 +53,6 @@
       \verb https://pmc.ncbi.nlm.nih.gov/articles/PMC8056301/
       \endverb
     \endentry
-    \entry{BaioBlangiardo2010BayesianDixonColes}{article}{}{}
-      \name{author}{2}{}{%
-        {{hash=c74c1978f61672d907cc27b11aec65a8}{%
-           family={Baio},
-           familyi={B\bibinitperiod},
-           given={Gianluca},
-           giveni={G\bibinitperiod}}}%
-        {{hash=0f3c941d41e1ccee6619493d31f0283e}{%
-           family={Blangiardo},
-           familyi={B\bibinitperiod},
-           given={Marta},
-           giveni={M\bibinitperiod}}}%
-      }
-      \strng{namehash}{53706806bf9404ef172ece2bc9b7614c}
-      \strng{fullhash}{53706806bf9404ef172ece2bc9b7614c}
-      \strng{fullhashraw}{53706806bf9404ef172ece2bc9b7614c}
-      \strng{bibnamehash}{53706806bf9404ef172ece2bc9b7614c}
-      \strng{authorbibnamehash}{53706806bf9404ef172ece2bc9b7614c}
-      \strng{authornamehash}{53706806bf9404ef172ece2bc9b7614c}
-      \strng{authorfullhash}{53706806bf9404ef172ece2bc9b7614c}
-      \strng{authorfullhashraw}{53706806bf9404ef172ece2bc9b7614c}
-      \field{sortinit}{B}
-      \field{sortinithash}{d7095fff47cda75ca2589920aae98399}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{journaltitle}{Journal of Applied Statistics}
-      \field{number}{2}
-      \field{title}{Bayesian Hierarchical Model for the Prediction of Football Results}
-      \field{volume}{37}
-      \field{year}{2010}
-      \field{pages}{253\bibrangedash 264}
-      \range{pages}{12}
-    \endentry
     \entry{Breiman2001RandomForests}{article}{}{}
       \name{author}{1}{}{%
         {{hash=132b7100417675d55d5d4d8b244f7a34}{%
@@ -542,39 +509,6 @@
       \field{year}{2004}
       \field{pages}{223\bibrangedash 246}
       \range{pages}{24}
-    \endentry
-    \entry{McHaleScarf2011Copula}{article}{}{}
-      \name{author}{2}{}{%
-        {{hash=6a3244b6ad82f9b5aa17b3f56953a161}{%
-           family={McHale},
-           familyi={M\bibinitperiod},
-           given={Ian\bibnamedelima G.},
-           giveni={I\bibinitperiod\bibinitdelim G\bibinitperiod}}}%
-        {{hash=39c6a5640445c62c8f6ec8969233b657}{%
-           family={Scarf},
-           familyi={S\bibinitperiod},
-           given={Philip\bibnamedelima A.},
-           giveni={P\bibinitperiod\bibinitdelim A\bibinitperiod}}}%
-      }
-      \strng{namehash}{1259669444523c2c36484663aa4281a0}
-      \strng{fullhash}{1259669444523c2c36484663aa4281a0}
-      \strng{fullhashraw}{1259669444523c2c36484663aa4281a0}
-      \strng{bibnamehash}{1259669444523c2c36484663aa4281a0}
-      \strng{authorbibnamehash}{1259669444523c2c36484663aa4281a0}
-      \strng{authornamehash}{1259669444523c2c36484663aa4281a0}
-      \strng{authorfullhash}{1259669444523c2c36484663aa4281a0}
-      \strng{authorfullhashraw}{1259669444523c2c36484663aa4281a0}
-      \field{sortinit}{M}
-      \field{sortinithash}{4625c616857f13d17ce56f7d4f97d451}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{journaltitle}{Statistical Modelling}
-      \field{number}{3}
-      \field{title}{Modelling the Dependence of Goals Scored by Opposing Teams in International Soccer Matches}
-      \field{volume}{11}
-      \field{year}{2011}
-      \field{pages}{219\bibrangedash 236}
-      \range{pages}{18}
     \endentry
     \entry{McInnesHealyMelville2018UMAP}{misc}{}{}
       \name{author}{3}{}{%

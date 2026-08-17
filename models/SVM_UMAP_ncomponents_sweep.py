@@ -1,8 +1,11 @@
 """
 Sweeps UMAP's N_components (the dimensionality-reduction target in
-SVM_UMAP.py) from 3 to 19 in steps of 2, to find the value that minimizes
-validation log loss -- same idea as the WINDOW sweep and the RandomizedSearchCV
-1-SE-rule scripts, applied to this one hyperparameter.
+SVM_UMAP.py), starting at 10 and stepping by 2, running until convergence
+rather than a fixed list -- same convergence rule as
+Poisson_Bivariate_intraseason_rolling_window_sweep.py's EWMA span sweep
+elsewhere in this project: track the running minimum validation log loss;
+if PATIENCE consecutive steps pass without a new minimum, the sweep is
+done -- run EXTRA_POINTS more points past that, then stop.
 
 Uses the same WINDOW=3 / VAL_SEASONS=1 walk-forward split as SVM_UMAP.py, but
 reports TRAIN vs VALIDATION log loss, not test-vs-Bet365 -- this is a
@@ -21,7 +24,7 @@ closed-form one), so the curve could be a little noisy from seed variance
 alone. Treat it as indicative of the general trend, not an exact optimum.
 
 This script is compute-heavy (UMAP + SVC fit from scratch for every one of 9
-folds x 9 N_components values = 81 fits) -- expect a real run time, not a
+folds x every N_components value tried) -- expect a real run time, not a
 quick one.
 """
 
@@ -32,10 +35,14 @@ from sklearn.svm import SVC
 from sklearn.preprocessing import label_binarize, StandardScaler
 from umap import UMAP
 
-DATA_PATH = r"C:\Users\misog\SCHOOL\Summer project\ML-football-odds\dataset\all_seasons_with_bookies.csv"
+DATA_PATH = r"C:\Users\misog\SCHOOL\Summer project\ML-football-odds\dataset\all_seasons_14window_ppg.csv"
 WINDOW = 3
 VAL_SEASONS = 1
-N_COMPONENTS_LIST = list(range(3, 20, 2))  # 3, 5, 7, 9, 11, 13, 15, 17, 19
+START_N_COMPONENTS = 10
+STEP = 2
+PATIENCE = 3       # consecutive non-improving steps before declaring convergence
+EXTRA_POINTS = 2   # additional steps to run past the convergence point
+MAX_N_COMPONENTS = 40  # safety cap
 OUTPUT_PATH = r"C:\Users\misog\SCHOOL\Summer project\ML-football-odds\images\umap_ncomponents_sweep.png"
 
 drop_cols = [
@@ -118,10 +125,32 @@ def main():
     all_df = all_df.reset_index(drop=True)
 
     results = []
-    for n in N_COMPONENTS_LIST:
+    best_val_ll = np.inf
+    steps_since_improve = 0
+    extra_run = 0
+    n = START_N_COMPONENTS
+
+    while True:
         train_ll, val_ll = run_for_n_components(all_df, n)
         print(f"N_components={n:2d}  train_ll={train_ll:.4f}  val_ll={val_ll:.4f}  gap={val_ll - train_ll:.4f}")
         results.append({"n_components": n, "train_ll": train_ll, "val_ll": val_ll})
+
+        if val_ll < best_val_ll - 1e-5:
+            best_val_ll = val_ll
+            steps_since_improve = 0
+        else:
+            steps_since_improve += 1
+
+        if steps_since_improve >= PATIENCE:
+            extra_run += 1
+            if extra_run > EXTRA_POINTS:
+                print(f"\nConverged: no improvement for {PATIENCE} steps, ran {EXTRA_POINTS} extra points past that.")
+                break
+
+        n += STEP
+        if n > MAX_N_COMPONENTS:
+            print(f"\nHit MAX_N_COMPONENTS={MAX_N_COMPONENTS} safety cap, stopping.")
+            break
 
     results_df = pd.DataFrame(results)
     best_row = results_df.loc[results_df["val_ll"].idxmin()]
@@ -129,6 +158,8 @@ def main():
         f"\nBest N_components by validation log loss: {int(best_row['n_components'])} "
         f"(val_ll={best_row['val_ll']:.4f})"
     )
+
+    n_components_list = results_df["n_components"].tolist()
 
     plt.figure(figsize=(9, 6))
     plt.plot(results_df["n_components"], results_df["train_ll"], marker="o", label="Train log loss")
@@ -140,7 +171,7 @@ def main():
     plt.xlabel("UMAP N_components")
     plt.ylabel("Log loss (mean across walk-forward folds)")
     plt.title("SVM + UMAP: train vs. validation log loss by N_components")
-    plt.xticks(N_COMPONENTS_LIST)
+    plt.xticks(n_components_list)
     plt.legend()
     plt.grid(alpha=0.3)
     plt.tight_layout()
