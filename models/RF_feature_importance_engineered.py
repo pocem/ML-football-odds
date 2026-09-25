@@ -1,6 +1,6 @@
 """
 Feature importance check on the full ENGINEERED dataset
-(dataset/all_seasons_14window_ppg.csv), unlike RF_feature_importance_raw_stats.py
+(data/processed/all_seasons_14window_ppg.csv), unlike RF_feature_importance_raw_stats.py
 which looked at raw same-match in-play stats (explanatory only, not usable
 pre-match). Every column here IS legitimate pre-match information: rolling
 EWMA stats (span=14, computed only from past matches), Elo ratings, and PPG
@@ -28,7 +28,7 @@ from sklearn.ensemble import RandomForestClassifier
 from sklearn.inspection import permutation_importance
 from sklearn.metrics import log_loss
 
-DATA_PATH = r"C:\Users\misog\SCHOOL\Summer project\ML-football-odds\dataset\all_seasons_14window_ppg.csv"
+DATA_PATH = "data/processed/all_seasons_14window_ppg.csv"
 TOP_N = 15
 HOLDOUT_SEASON = "25-26"  # most recent season, held out for permutation importance
 N_REPEATS = 20

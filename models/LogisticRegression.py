@@ -43,7 +43,7 @@ from sklearn.linear_model import LogisticRegression
 from sklearn.preprocessing import label_binarize, StandardScaler
 from scipy import stats
 
-DATA_PATH = r"C:\Users\misog\SCHOOL\Summer project\ML-football-odds\dataset\all_seasons_14window_ppg.csv"
+DATA_PATH = "data/processed/all_seasons_14window_ppg.csv"
 WINDOW = 3     # prior full seasons used as the historical baseline
 N_CHUNKS = 5   # how many chronological chunks each test season is split into
 

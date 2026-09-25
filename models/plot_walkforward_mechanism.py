@@ -16,8 +16,8 @@ Saved to images/walkforward_mechanism.png.
 import matplotlib.pyplot as plt
 import matplotlib.patches as mpatches
 
-SEASON_LEVEL_PATH = r"C:\Users\misog\SCHOOL\Summer project\ML-football-odds\images\walkforward_scheme.png"
-INTRASEASON_PATH = r"C:\Users\misog\SCHOOL\Summer project\ML-football-odds\images\walkforward_intraseason_scheme.png"
+SEASON_LEVEL_PATH = "report/Images/walkforward_scheme.png"
+INTRASEASON_PATH = "report/Images/walkforward_intraseason_scheme.png"
 
 TRAIN_COLOR = "#4C72B0"
 ELAPSED_COLOR = "#DD8452"

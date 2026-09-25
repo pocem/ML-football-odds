@@ -37,7 +37,7 @@ sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__)))) 
 from Poisson_Covariates_Bivariate import PoissonRegressionGoalsBivariate, HOME_COVARIATES, AWAY_COVARIATES
 from rebuild_rolling_as_ewma import build_team_centric
 
-DATA_PATH = r"C:\Users\misog\SCHOOL\Summer project\ML-football-odds\dataset\all_seasons_with_bookies.csv"
+DATA_PATH = "data/processed/all_seasons_with_bookies.csv"
 WINDOW = 3
 SPANS = list(range(3, 11))  # 3, 4, 5, ..., 10
 

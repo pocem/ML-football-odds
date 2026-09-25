@@ -37,14 +37,14 @@ sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__)))) 
 from Poisson_Covariates_Bivariate import PoissonRegressionGoalsBivariate
 from rebuild_rolling_as_ewma import build_team_centric
 
-DATA_PATH = r"C:\Users\misog\SCHOOL\Summer project\ML-football-odds\dataset\all_seasons_with_bookies.csv"
+DATA_PATH = "data/processed/all_seasons_with_bookies.csv"
 WINDOW = 3       # same as Poisson_Bivariate_intraseason_walkforward.py
 N_CHUNKS = 5     # same as Poisson_Bivariate_intraseason_walkforward.py
 START_SPAN = 5
 PATIENCE = 3     # consecutive non-improving spans before declaring convergence
 EXTRA_POINTS = 2 # additional spans to run past the convergence point
 MAX_SPAN = 40    # safety cap
-OUTPUT_PATH = r"C:\Users\misog\SCHOOL\Summer project\ML-football-odds\images\poisson_intraseason_span_sweep.png"
+OUTPUT_PATH = "report/Images/poisson_intraseason_span_sweep.png"
 
 
 def rebuild_xg_columns(matches, team_all, span):

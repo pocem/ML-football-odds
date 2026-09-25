@@ -20,7 +20,7 @@ from scipy import stats
 
 from Poisson_Covariates_Bivariate import PoissonRegressionGoalsBivariate
 
-DATA_PATH = r"C:\Users\misog\SCHOOL\Summer project\ML-football-odds\dataset\all_seasons_14window_ppg.csv"
+DATA_PATH = "data/processed/all_seasons_14window_ppg.csv"
 WINDOW = 3
 N_CHUNKS = 5
 BOOKIES = ["B365", "BW", "PS"]  # Bet365, Bet&Win, Pinnacle -- only ones with full coverage 17-18..25-26

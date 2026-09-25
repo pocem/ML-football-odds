@@ -26,7 +26,7 @@ is safer than trying to enumerate every one to exclude.
 import pandas as pd
 from sklearn.ensemble import RandomForestClassifier
 
-SEASON_FILES = ["pl21-22.csv", "pl22-23.csv", "pl23-24.csv", "pl24-25.csv"]
+SEASON_FILES = ["data/raw/pl21-22.csv", "data/raw/pl22-23.csv", "data/raw/pl23-24.csv", "data/raw/pl24-25.csv"]
 
 FEATURE_COLS = [
     "HS", "AS", "HST", "AST",

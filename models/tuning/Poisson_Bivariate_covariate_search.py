@@ -47,7 +47,7 @@ sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__)))) 
 
 import Poisson_Covariates_Bivariate as pcb
 
-DATA_PATH = r"C:\Users\misog\SCHOOL\Summer project\ML-football-odds\dataset\all_seasons_14window_ppg.csv"
+DATA_PATH = "data/processed/all_seasons_14window_ppg.csv"
 WINDOW = 3
 N_CHUNKS = 5
 MIN_IMPROVEMENT = 0.0005  # stop when the best candidate's log loss gain is smaller than this

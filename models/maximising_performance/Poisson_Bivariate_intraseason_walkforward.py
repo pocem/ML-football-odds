@@ -60,7 +60,7 @@ sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__)))) 
 
 from Poisson_Covariates_Bivariate import PoissonRegressionGoalsBivariate, HOME_COVARIATES, AWAY_COVARIATES
 
-DATA_PATH = r"C:\Users\misog\SCHOOL\Summer project\ML-football-odds\dataset\all_seasons_14window_ppg.csv"
+DATA_PATH = "data/processed/all_seasons_14window_ppg.csv"
 WINDOW = 3     # prior full seasons used as the historical baseline, same as Poisson_Covariates_Bivariate.py
 N_CHUNKS = 5   # how many chronological chunks each test season is split into
 

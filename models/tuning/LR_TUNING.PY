@@ -22,7 +22,7 @@ from sklearn.preprocessing import StandardScaler, label_binarize
 # -------------------------------------------------------------------------
 # Config -- change values here only, nothing is re-hardcoded elsewhere.
 # -------------------------------------------------------------------------
-DATA_PATH = r"C:\Users\misog\SCHOOL\Summer project\ML-football-odds\dataset\all_seasons_with_bookies.csv"
+DATA_PATH = "data/processed/all_seasons_with_bookies.csv"
 WINDOW = 5              # seasons of history per walk-forward CV fold
 FINAL_TEST_SEASON = "24-25"
 N_ITER = 30             # number of randomized hyperparameter combos to try

@@ -36,7 +36,7 @@ from sklearn.preprocessing import label_binarize, StandardScaler
 from umap import UMAP
 from scipy import stats
 
-DATA_PATH = r"C:\Users\misog\SCHOOL\Summer project\ML-football-odds\dataset\all_seasons_14window_ppg.csv"
+DATA_PATH = "data/processed/all_seasons_14window_ppg.csv"
 WINDOW = 3        # total prior seasons pulled in (train + validation)
 VAL_SEASONS = 1   # most recent of those WINDOW seasons, held out fixed (diagnostic only)
 N_CHUNKS = 5      # chronological chunks the current test season is split into

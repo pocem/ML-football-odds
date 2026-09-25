@@ -39,7 +39,7 @@ from scipy.stats import poisson
 from sklearn.preprocessing import label_binarize
 from scipy import stats
 
-DATA_PATH = r"C:\Users\misog\SCHOOL\Summer project\ML-football-odds\dataset\all_seasons_14window_ppg.csv"
+DATA_PATH = "data/processed/all_seasons_14window_ppg.csv"
 WINDOW = 3      # prior full seasons used as the historical baseline
 N_CHUNKS = 5    # chronological chunks the current test season is split into
 

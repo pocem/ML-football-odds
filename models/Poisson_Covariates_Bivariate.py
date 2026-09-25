@@ -55,7 +55,7 @@ from scipy.special import gammaln, logsumexp
 from sklearn.preprocessing import label_binarize
 from scipy import stats
 
-DATA_PATH = r"C:\Users\misog\SCHOOL\Summer project\ML-football-odds\dataset\all_seasons_14window_ppg.csv"
+DATA_PATH = "data/processed/all_seasons_14window_ppg.csv"
 WINDOW = 3
 
 

@@ -35,7 +35,7 @@ from sklearn.svm import SVC
 from sklearn.preprocessing import label_binarize, StandardScaler
 from umap import UMAP
 
-DATA_PATH = r"C:\Users\misog\SCHOOL\Summer project\ML-football-odds\dataset\all_seasons_14window_ppg.csv"
+DATA_PATH = "data/processed/all_seasons_14window_ppg.csv"
 WINDOW = 3
 VAL_SEASONS = 1
 START_N_COMPONENTS = 10
@@ -43,7 +43,7 @@ STEP = 2
 PATIENCE = 3       # consecutive non-improving steps before declaring convergence
 EXTRA_POINTS = 2   # additional steps to run past the convergence point
 MAX_N_COMPONENTS = 40  # safety cap
-OUTPUT_PATH = r"C:\Users\misog\SCHOOL\Summer project\ML-football-odds\images\umap_ncomponents_sweep.png"
+OUTPUT_PATH = "report/Images/umap_ncomponents_sweep.png"
 
 drop_cols = [
     "Date", "Time", "HomeTeam", "AwayTeam", "FTHG", "FTAG", "FTR", "Season",

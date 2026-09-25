@@ -1,15 +1,23 @@
 """
-Poisson.py's DixonColes model, but with covariate-driven scoring rates
-(same 7 covariates as Poisson_Covariates_Bivariate.py: Elo, xG_Rolling5,
-xGA_Rolling5, PPG, ShotOnTargetDifference_RollingTeam7) instead of per-team
-attack/defense ratings. Home/away goals are still modeled as INDEPENDENT
-Poisson counts, with the same low-score tau correction as Poisson.py --
-this is the middle ground between plain Dixon-Coles (no covariates,
-Poisson.py) and the full bivariate model (covariates + genuine correlation
-via trivariate reduction, Poisson_Covariates_Bivariate.py).
+Poisson_Covariates_Bivariate.py, isolating just the mean-imputation fix from
+Poisson_Bivariate_Copula.py (WITHOUT the Gaussian copula change), to see how
+much of that experiment's regression vs. the original model was due to the
+imputation change alone vs. the copula change alone. Keeps the original,
+fast, closed-form trivariate-reduction likelihood (lambda3 >= 0 constraint
+still present here) -- only the covariate-imputation step changes.
 
-Same intra-season cumulative sliding walk-forward as every other model
-script (WINDOW=3, N_CHUNKS=5), on all_seasons_14window_ppg.csv.
+Old behavior: matches_df[COVARIATES].fillna(0) BEFORE standardizing -- for
+Elo (train-set mean ~1750, std ~118), a raw 0 fill standardizes to roughly
+-14.8 SD, a wild outlier, not a neutral "assume average team" value.
+
+New behavior here: missing covariates filled with the TRAINING SET's own
+per-column mean (skipping NaNs) before standardizing, so a missing value
+maps to exactly 0 in standardized space -- the correct "no information yet,
+assume league average" fallback.
+
+Same 7 covariates, same intra-season cumulative sliding walk-forward
+(WINDOW=3, N_CHUNKS=5) on data/processed/all_seasons_14window_ppg.csv as every
+other model in this project.
 
 RESULT: filled in after running -- see bottom of this docstring.
 """
@@ -17,7 +25,7 @@ RESULT: filled in after running -- see bottom of this docstring.
 import numpy as np
 import pandas as pd
 from scipy.optimize import minimize
-from scipy.stats import poisson
+from scipy.special import gammaln, logsumexp
 from sklearn.preprocessing import label_binarize
 from scipy import stats
 
@@ -35,37 +43,51 @@ AWAY_COVARIATES = [
 ]
 
 
-class PoissonRegressionGoalsCovariates:
+def _bivpois_logpmf(x, y, lam1, lam2, lam3):
+    """Log-pmf of the bivariate Poisson (trivariate reduction) -- unchanged
+    from Poisson_Covariates_Bivariate.py."""
+    min_xy = np.minimum(x, y)
+    max_k = int(min_xy.max())
+
+    log_terms = np.full((max_k + 1, len(x)), -np.inf)
+    log_ratio = np.log(lam3) - np.log(lam1) - np.log(lam2)
+    for i in range(max_k + 1):
+        mask = min_xy >= i
+        xi, yi = x[mask], y[mask]
+        logC_x = gammaln(xi + 1) - gammaln(i + 1) - gammaln(xi - i + 1)
+        logC_y = gammaln(yi + 1) - gammaln(i + 1) - gammaln(yi - i + 1)
+        ratio_term = i * (log_ratio if np.isscalar(log_ratio) else log_ratio[mask])
+        log_terms[i, mask] = logC_x + logC_y + gammaln(i + 1) + ratio_term
+
+    logS = logsumexp(log_terms, axis=0)
+    return -(lam1 + lam2 + lam3) + x * np.log(lam1) - gammaln(x + 1) + y * np.log(lam2) - gammaln(y + 1) + logS
+
+
+class PoissonRegressionGoalsMeanImpute:
 
     def __init__(self):
         self.k = len(HOME_COVARIATES)
         self.beta_home = None
         self.beta_away = None
         self.home_adv = None
-        self.rho = None
+        self.theta = None
         self.home_mean = self.home_std = self.away_mean = self.away_std = None
 
-    @staticmethod
-    def _tau(x, y, lam, mu, rho):
-        """Dixon-Coles low-score correlation adjustment (only affects 0-0/0-1/1-0/1-1)."""
-        if x == 0 and y == 0:
-            return 1 - lam * mu * rho
-        elif x == 0 and y == 1:
-            return 1 + lam * rho
-        elif x == 1 and y == 0:
-            return 1 + mu * rho
-        elif x == 1 and y == 1:
-            return 1 - rho
-        return 1.0
-
     def fit(self, matches_df):
-        X_home = matches_df[HOME_COVARIATES].fillna(0).values
-        X_away = matches_df[AWAY_COVARIATES].fillna(0).values
+        X_home_raw = matches_df[HOME_COVARIATES].astype(float)
+        X_away_raw = matches_df[AWAY_COVARIATES].astype(float)
 
-        self.home_mean, self.home_std = X_home.mean(axis=0), X_home.std(axis=0)
-        self.away_mean, self.away_std = X_away.mean(axis=0), X_away.std(axis=0)
+        # Mean/std computed skipping NaNs, THEN missing values filled with
+        # that same mean -- an imputed value maps to exactly 0 post-standardization.
+        self.home_mean = X_home_raw.mean(axis=0).values
+        self.home_std = X_home_raw.std(axis=0).values
+        self.away_mean = X_away_raw.mean(axis=0).values
+        self.away_std = X_away_raw.std(axis=0).values
         self.home_std[self.home_std == 0] = 1
         self.away_std[self.away_std == 0] = 1
+
+        X_home = X_home_raw.fillna(pd.Series(self.home_mean, index=HOME_COVARIATES)).values
+        X_away = X_away_raw.fillna(pd.Series(self.away_mean, index=AWAY_COVARIATES)).values
 
         X_home_std = (X_home - self.home_mean) / self.home_std
         X_away_std = (X_away - self.away_mean) / self.away_std
@@ -78,49 +100,50 @@ class PoissonRegressionGoalsCovariates:
             beta_home = params[:k]
             beta_away = params[k:2 * k]
             home_adv = params[2 * k]
-            rho = params[2 * k + 1]
+            theta = params[2 * k + 1]
 
-            lam = np.exp(home_adv + X_home_std @ beta_home)
-            mu = np.exp(X_away_std @ beta_away)
+            lam1 = np.exp(home_adv + X_home_std @ beta_home)
+            lam2 = np.exp(X_away_std @ beta_away)
+            lam3 = np.exp(theta)
 
-            ll = poisson.logpmf(fthg, lam) + poisson.logpmf(ftag, mu)
-            tau_vals = np.array([
-                self._tau(x, y, l, m, rho) for x, y, l, m in zip(fthg, ftag, lam, mu)
-            ])
-            tau_vals = np.clip(tau_vals, 1e-10, None)
-            ll += np.log(tau_vals)
+            ll = _bivpois_logpmf(fthg, ftag, lam1, lam2, lam3)
             return -ll.sum()
 
         x0 = np.zeros(2 * k + 2)
-        x0[2 * k] = 0.2  # home advantage init
+        x0[2 * k] = 0.2
+        x0[2 * k + 1] = -3.0
 
         result = minimize(neg_log_likelihood, x0, method="L-BFGS-B")
 
         self.beta_home = result.x[:k]
         self.beta_away = result.x[k:2 * k]
         self.home_adv = result.x[2 * k]
-        self.rho = result.x[2 * k + 1]
+        self.theta = result.x[2 * k + 1]
         return self
 
     def predict_proba(self, matches_df, max_goals=10):
         """Returns an (n_matches, 3) array, columns ordered [H, D, A]."""
-        X_home = matches_df[HOME_COVARIATES].fillna(0).values
-        X_away = matches_df[AWAY_COVARIATES].fillna(0).values
+        X_home_raw = matches_df[HOME_COVARIATES].astype(float)
+        X_away_raw = matches_df[AWAY_COVARIATES].astype(float)
+        X_home = X_home_raw.fillna(pd.Series(self.home_mean, index=HOME_COVARIATES)).values
+        X_away = X_away_raw.fillna(pd.Series(self.away_mean, index=AWAY_COVARIATES)).values
         X_home_std = (X_home - self.home_mean) / self.home_std
         X_away_std = (X_away - self.away_mean) / self.away_std
 
-        lam_all = np.exp(self.home_adv + X_home_std @ self.beta_home)
-        mu_all = np.exp(X_away_std @ self.beta_away)
+        lam1_all = np.exp(self.home_adv + X_home_std @ self.beta_home)
+        lam2_all = np.exp(X_away_std @ self.beta_away)
+        lam3 = np.exp(self.theta)
+
+        xs, ys = np.meshgrid(np.arange(max_goals + 1), np.arange(max_goals + 1), indexing="ij")
+        x_flat, y_flat = xs.ravel().astype(float), ys.ravel().astype(float)
 
         probs = []
-        for lam, mu in zip(lam_all, mu_all):
-            home_pmf = poisson.pmf(np.arange(max_goals + 1), lam)
-            away_pmf = poisson.pmf(np.arange(max_goals + 1), mu)
-            grid = np.outer(home_pmf, away_pmf)
-            for x in range(2):
-                for y in range(2):
-                    grid[x, y] *= self._tau(x, y, lam, mu, self.rho)
-            grid = grid / grid.sum()  # renormalize after the tau adjustment
+        for lam1, lam2 in zip(lam1_all, lam2_all):
+            lam1_arr = np.full_like(x_flat, lam1)
+            lam2_arr = np.full_like(x_flat, lam2)
+            log_pmf = _bivpois_logpmf(x_flat, y_flat, lam1_arr, lam2_arr, lam3)
+            grid = np.exp(log_pmf).reshape(max_goals + 1, max_goals + 1)
+            grid = grid / grid.sum()
 
             p_home = np.tril(grid, -1).sum()
             p_draw = np.trace(grid)
@@ -172,7 +195,7 @@ def walk_forward_vs_market(all_df):
             elapsed_chunks = pd.concat(chunks[:c_idx]) if c_idx > 0 else season_df.iloc[0:0]
             train_df = pd.concat([prior_df, elapsed_chunks])
 
-            model = PoissonRegressionGoalsCovariates().fit(train_df)
+            model = PoissonRegressionGoalsMeanImpute().fit(train_df)
 
             proba = model.predict_proba(test_chunk)
             classes_order = ["H", "D", "A"]
@@ -249,6 +272,12 @@ def walk_forward_vs_market(all_df):
     print(f"Bet365 Brier:        {b365_brier_all.mean():.4f}")
     print(f"Avg-bookie Brier:    {avg_brier_all.mean():.4f}")
     print(f"Model accuracy (1X2): {model_correct_all.mean():.4f}")
+
+    print(
+        "\n(Compare against Poisson_Covariates_Bivariate.py's reported result: "
+        "0.9678 pooled log loss / 0.5746 Brier / 54.26% accuracy, "
+        "and Poisson_Bivariate_Copula.py's: 0.9726 / 0.5780 / 53.74%.)"
+    )
 
     print("\n--- Log loss ---")
     report_comparison("log loss", model_ll_all, b365_ll_all, "Bet365")

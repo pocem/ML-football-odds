@@ -58,7 +58,7 @@ from sklearn.ensemble import RandomForestClassifier
 from sklearn.preprocessing import label_binarize
 from scipy import stats
 
-DATA_PATH = r"C:\Users\misog\SCHOOL\Summer project\ML-football-odds\dataset\all_seasons_with_bookies.csv"
+DATA_PATH = "data/processed/all_seasons_with_bookies.csv"
 WINDOW = 3         # prior full seasons used as the historical baseline, same as regression_models.ipynb
 N_CHUNKS = 5       # how many chronological chunks each test season is split into
 
